@@ -15,7 +15,22 @@
 
 ### 比较函数
 
-* comparable (public class Studfent<Comparable>.... @Override public int compareTo(Student o){} Collections.sort())
+* comparable
+    ```
+    public class Student<Comparable> {
+        ...
+        @Override
+        public int compareTo(Student other) {
+            return Integer.compare(this.score, other.score);
+        }
+    }
+
+    public static void main(String[] args) {
+        List<Student> students = Arrays.asList();
+
+        Collections.sort(students);
+    }
+    ```
 * comparator method(Students.sort((s1, s2) -> Integer.compare(s2.getScore(), s1.getScore()));)
 
 
@@ -35,3 +50,6 @@
 ### 进阶动态规划
 
 * 01背包：
+
+
+Error while installing JDK Error: EPERM: operation not permitted, rename 'c:\Users\15103\.vscode\extensions\oracle.oracle-java-24.1.0\out\webviews\jdkDownloader\jdk_downloads\jdk-24.0.1' -> 'c:\Program Files\JDKfromVSCode\openJdk-24'
