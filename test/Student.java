@@ -14,7 +14,8 @@ public class Student implements Comparable<Student> {
         
     @Override
     public int compareTo(Student other) {
-        return Integer.compare(this.score, other.score);
+        // return Integer.compare(other.score, this.score); this is the descending order
+        return Integer.compare(this.score, other.score); // while this is the ascending order
     }
 
     public static void main(String[] args) {
@@ -28,7 +29,5 @@ public class Student implements Comparable<Student> {
         for (Student s : students) {
             System.out.println(s.getScore());
         }
-
-        System.out.println("Hellow");
     }
 }
