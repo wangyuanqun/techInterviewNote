@@ -1,10 +1,10 @@
 import java.util.*;
 
-public class Student implements Comparable<Student> {
+public class StudentComparable implements Comparable<StudentComparable> {
 
     private final int score;
 
-    public Student(int score) {
+    public StudentComparable(int score) {
         this.score = score;
     }
 
@@ -13,20 +13,20 @@ public class Student implements Comparable<Student> {
     }
         
     @Override
-    public int compareTo(Student other) {
+    public int compareTo(StudentComparable other) {
         // return Integer.compare(other.score, this.score); this is the descending order
         return Integer.compare(this.score, other.score); // while this is the ascending order
     }
 
     public static void main(String[] args) {
 
-        List<Student> students = Arrays.asList(new Student[] {
-            new Student(2), new Student(3), new Student(1)
+        List<StudentComparable> students = Arrays.asList(new StudentComparable[] {
+            new StudentComparable(2), new StudentComparable(3), new StudentComparable(1)
         });
 
         Collections.sort(students);
 
-        for (Student s : students) {
+        for (StudentComparable s : students) {
             System.out.println(s.getScore());
         }
     }
