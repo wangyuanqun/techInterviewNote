@@ -11,7 +11,7 @@ public class MergeSort {
             return;
         }
 
-        // System.out.println(start + " " + end);//
+        // System.out.println("s e: " + start + " " + end);//
 
         int mid = start + (end - start) / 2;
         mergeSort(list, start, mid);
@@ -20,7 +20,7 @@ public class MergeSort {
     }
 
     public static void merge(List<Integer> list, int start, int mid, int end) {
-        // System.out.println(start + " " + mid + " " + end);//
+        // System.out.println("s m e: " + start + " " + mid + " " + end);//
         List<Integer> temp = new ArrayList<>();
 
         int left = start;
@@ -48,19 +48,12 @@ public class MergeSort {
             list.set(i, temp.get(i - start)); // for temp, starts from 0
         }
 
-        // System.err.println("=====================");//
-        // for (int i = 0; i < temp.size(); i++) {//
-        //     System.out.println(temp.get(i));//
-        // }
-
-        
-
     }
 
 
     public static void main(String[] args) {
         Random r = new Random();
-        int len = r.nextInt(1000);
+        int len = r.nextInt(100);
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < len; i++) {
             list.add(r.nextInt(1000));
