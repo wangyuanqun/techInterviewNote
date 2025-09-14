@@ -98,7 +98,6 @@ public class QuickSort {
             Collections.copy(copy, list);
             Collections.sort(copy);
 
-            // quickSort(list, 0, len);
             quickSort(list, 0, len);
 
             int count = 0;
@@ -110,7 +109,41 @@ public class QuickSort {
             }
             if (count != len) System.err.println(count == len);
         }
-        System.out.println("hello");
+        System.out.println("hello world");
         
     }
+
+    // public static void quickSort1(List<Integer> list, int start, int end) {
+
+    //     if (start >= end) return;
+
+    //     int pivot = quickSortRandom(list, start, end);
+    //     quickSort1(list, start, pivot);
+    //     quickSort1(list, pivot + 1, end);
+    // }
+
+    // private static int quickSortRandom(List<Integer> list, int start, int end) {
+        
+    //     Random r = new Random();
+    //     int pivot = r.nextInt(start, end);
+
+    //     int small = start;
+    //     for (int i = start; i < end; i++) {
+    //         if (list.get(i) < list.get(pivot)) {
+
+    //             int temp = list.get(i);
+    //             list.set(i, list.get(small));
+    //             list.set(small, temp);
+    //             if (small == pivot) pivot = i;
+    //             small++;
+    //         }
+    //     }
+
+    //     int temp = list.get(pivot);
+    //     list.set(pivot, list.get(small));
+    //     list.set(small, temp);
+
+
+    //     return small;
+    // }
 }
