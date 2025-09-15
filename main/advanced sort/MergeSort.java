@@ -53,27 +53,71 @@ public class MergeSort {
 
     public static void main(String[] args) {
         Random r = new Random();
-        int len = r.nextInt(100);
+        int len = r.nextInt(1000, 2000);
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < len; i++) {
             list.add(r.nextInt(1000));
+            // System.out.print(list.get(i) + " ");
         }
 
-        // System.out.println("length is " + len);//
+        System.out.println("length is " + len);//
 
         List<Integer> copy = new ArrayList<>(list);
         Collections.copy(copy, list);
         Collections.sort(copy);
 
-        mergeSort(list, 0, len - 1);
+        // mergeSort(list, 0, len - 1);
+        mergeSort1(list, 0, len);
 
         int count = 0;
         for (int i = 0; i < len; i++) {
             if (list.get(i).equals(copy.get(i))) {
                 count++;
-                System.out.println(i + " " + list.get(i) + " " + copy.get(i));
+                // System.out.println(i + " " + list.get(i) + " " + copy.get(i));
             }
         }
         System.err.println(count == len);
+    }
+
+    public static void mergeSort1(List<Integer> list, int start, int end) {
+        if (start >= end - 1) {
+            return;
+        }
+
+        // System.out.println("s e: " + start + " " + end);//
+
+        int mid = start + (end - start) / 2;
+        mergeSort1(list, start, mid);
+        mergeSort1(list, mid, end);
+        merge1(list, start, mid, end);
+    }
+
+    public static void merge1(List<Integer> list, int start, int mid, int end) {
+
+        List<Integer> temp = new ArrayList<>();
+
+        int left = start;
+        int right = mid;
+        while (left < mid && right < end) {
+            if (list.get(left) < list.get(right)) {
+                temp.add(list.get(left));
+                left++;
+            } else {
+                temp.add(list.get(right));
+                right++;
+            }
+        }
+
+        if (left == mid && right < end) {
+            for (int i = right; i < end; i++) temp.add(list.get(i));
+        }
+
+        if (left < mid && right == end) {
+            for (int i = left; i < mid; i++) temp.add(list.get(i));
+        }
+
+        for (int i = start; i < end; i++) {
+            list.set(i, temp.get(i - start));
+        }
     }
 }
