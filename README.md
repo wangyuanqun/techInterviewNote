@@ -76,9 +76,18 @@
         * 同余搜索
     * 例题：https://blog.csdn.net/WhereIsHeroFrom/article/details/111407529 (BFS 题集)
 
+### 数据结构
+
+* Stack: FILO
+* Queue: FIFO
+
 ### 进阶数据结构
 
 * 数据结构 reference - https://www.zhihu.com/column/c_1458889486494687232
+
+* 单调栈
+    * 单调递增栈
+    * 单调递减栈
 
 * 堆：一种完全二叉树，分为最大堆和最小堆。最大堆的每个节点都大于或等于其子节点的值，最小堆反之。可以用来实现**优先队列**(PriorityQueue)，支持插入和删除 O(logn)。
 * 并查集：一种用于处理不相交集合的合并于查找问题。主要操作有查找和合并,接近O(1)。并查集常用于解决连通性问题，如判断图的连通分量。
