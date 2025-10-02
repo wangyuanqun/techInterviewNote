@@ -2,6 +2,7 @@ import java.util.*;
 
 public class BaseBallGame682 {
 
+    @SuppressWarnings("ConvertToStringSwitch")
     public int calPoints(String[] operations) {
 
         Deque<Integer> stack = new ArrayDeque<>();
@@ -19,7 +20,7 @@ public class BaseBallGame682 {
                 stack.push(i);
                 stack.push(i + j);
             } else {
-                stack.push(Integer.parseInt(str));
+                stack.push(Integer.valueOf(str));
             }
         }
         int res = 0;
@@ -33,9 +34,9 @@ public class BaseBallGame682 {
     public static void main(String[] args) {
         BaseBallGame682 b = new BaseBallGame682();
 
-        String[] str = "52CD+".split("");
+        // String[] str = "52CD+".split("");
         String[] s = new String[] {"5","-2","4","C","D","9","+","+"};
-        String[] s1 = new String[] {"1","C"};
+        // String[] s1 = new String[] {"1","C"};
         System.out.println(b.calPoints(s));
 
     }
