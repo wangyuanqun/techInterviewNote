@@ -25,6 +25,12 @@ https://github.com/mxssl/sre-interview-prep-guide
     * u: Provides a user-oriented format, showing detailed information about the processes.
     * x: Lists processes without a controlling terminal, typically those started at boot time and running in the background.
 
-### Network linux command
+### Linux Boot process
 
-* netstat
+* Power supply initialization - at this stage, the components receive stable power to operate correctly, e.g. motherboard, CPU, GPU, cooling fans.
+* BIOS/UEFI startup and POST - BIOS/UEFI is responsible for POST, error handling, and hardware initialization. POST: Power-on self test to check hardware components working correctly.
+* Boot loader - the job of boot loader is to load the actual operating system kernel into memory. 
+    * OS kernel - is responsible for managing the system's resources and facilitating communication between hardware and software components.
+* Kernel and Init process - so that it can perform tasks, such as managing CPU, memory, and hardware devices; initializing system drivers; preparing user space.
+* Starting system services and daemons - such as networking services, printing services, security services.
+* User login and Desktop Environment - this gives the user a graphical interface to interact with applications and the underlying hardware.
