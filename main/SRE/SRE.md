@@ -38,7 +38,7 @@ https://github.com/mxssl/sre-interview-prep-guide
 ### Network
 
 When typing a url and hit enter
-* ![alt text](<when typing a url.jpeg>)
+* ![alt text](<attachments/when typing a url.jpeg>)
 
 #### DNS record explained
 * A records - **Domain name -> IP address**
