@@ -34,3 +34,22 @@ https://github.com/mxssl/sre-interview-prep-guide
 * Kernel and Init process - so that it can perform tasks, such as managing CPU, memory, and hardware devices; initializing system drivers; preparing user space.
 * Starting system services and daemons - such as networking services, printing services, security services.
 * User login and Desktop Environment - this gives the user a graphical interface to interact with applications and the underlying hardware.
+
+### Network
+
+When typing a url and hit enter
+* ![alt text](<when typing a url.jpeg>)
+
+#### DNS record explained
+* A records - **Domain name -> IP address**
+![alt text](<A record.jpeg>)
+* Name Servers - **second level domain -> responsible Authoritative DNS server**
+![alt text](<Name server.jpeg>)
+* AAAA Records - **Domain name -> IP address**
+![alt text](<AAAA record.jpeg>)
+* Mail Server  - **tells email server where to send your messages for your domain**
+![alt text](<MX Record.jpeg>)
+* PTR Record - **security purpose, check the correct ip address with domain name**
+![alt text](<PTR Record.jpeg>)
+* CNAME Record - **Alias -> Real**
+![alt text](CNAME.jpeg)

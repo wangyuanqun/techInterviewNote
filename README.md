@@ -79,6 +79,7 @@
 ### 数据结构
 
 * Stack: FILO
+![alt text](<main/Data Structure/Stack/stack.jpg>)
 * Queue: FIFO
 
 ### 进阶数据结构
