@@ -71,10 +71,11 @@ When typing a url and hit enter
     * IP - protocol
         * src/des are used to identify the devices on the network
         * how to get the ip address - linux/macOs: ifconfig; windows: ipconfig
+    * NAT (for IPv4 lack) - network address translation, able to use 1 public ip address per home/company, within them, use private ip address for different address
 
 * Data link layer - abstractions that convert bytes to human-read/hear/touch
-    * Ethernet - protocol
-        * src/des are burned in the interface card that can't be changed
 
 =========================================
 * Physical layer
+    * Ethernet - protocol
+        * src/des are burned in the interface card that can't be changed
