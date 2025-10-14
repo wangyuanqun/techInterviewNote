@@ -53,3 +53,28 @@ When typing a url and hit enter
 ![alt text](<attachments/PTR Record.jpeg>)
 * CNAME Record - **Alias -> Real**
 ![alt text](attachments/CNAME.jpeg)
+
+#### Network model
+
+* Application layer
+    * DNS - protocol
+    * DHCP - protocol
+    * HTTP - protocol
+
+=========================================
+* Transport layer
+    * TCP/UDP - protocol
+    * port addresses
+        * src/des are used for services replications
+
+* Network layer
+    * IP - protocol
+        * src/des are used to identify the devices on the network
+        * how to get the ip address - linux/macOs: ifconfig; windows: ipconfig
+
+* Data link layer - abstractions that convert bytes to human-read/hear/touch
+    * Ethernet - protocol
+        * src/des are burned in the interface card that can't be changed
+
+=========================================
+* Physical layer
