@@ -42,14 +42,14 @@ When typing a url and hit enter
 
 #### DNS record explained
 * A records - **Domain name -> IP address**
-![alt text](<A record.jpeg>)
+![alt text](<attachments/A record.jpeg>)
 * Name Servers - **second level domain -> responsible Authoritative DNS server**
-![alt text](<Name server.jpeg>)
+![alt text](<attachments/Name server.jpeg>)
 * AAAA Records - **Domain name -> IP address**
-![alt text](<AAAA record.jpeg>)
+![alt text](<attachments/AAAA record.jpeg>)
 * Mail Server  - **tells email server where to send your messages for your domain**
-![alt text](<MX Record.jpeg>)
+![alt text](<attachments/MX Record.jpeg>)
 * PTR Record - **security purpose, check the correct ip address with domain name**
-![alt text](<PTR Record.jpeg>)
+![alt text](<attachments/PTR Record.jpeg>)
 * CNAME Record - **Alias -> Real**
-![alt text](CNAME.jpeg)
+![alt text](attachments/CNAME.jpeg)
