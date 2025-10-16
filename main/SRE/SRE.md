@@ -35,6 +35,13 @@ https://github.com/mxssl/sre-interview-prep-guide
 * Starting system services and daemons - such as networking services, printing services, security services.
 * User login and Desktop Environment - this gives the user a graphical interface to interact with applications and the underlying hardware.
 
+* Power button puished
+* BIOS -> POST to test the hardware HDD/SSD, keyboard etc, util this part it's indepent from OS. BIOS is used to boot the Operation System
+    * BIOS checks the MBR()
+    ![alt text](attachments/BIOS.png)
+* 
+
+
 ### Network
 
 * Web (HTTP): Port 80
