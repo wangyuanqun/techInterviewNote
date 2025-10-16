@@ -89,3 +89,8 @@ When typing a url and hit enter
 * Physical layer
     * Ethernet - protocol
         * src/des are burned in the interface card that can't be changed
+
+
+#### Routing protocols
+
+![alt text](<attachments/routing protocol.jpeg>)
