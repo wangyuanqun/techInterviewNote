@@ -37,6 +37,16 @@ https://github.com/mxssl/sre-interview-prep-guide
 
 ### Network
 
+* Web (HTTP): Port 80
+* Web (HTTPS - secure): Port 443
+* File Transfer Protocol (FTP): Port 21
+* Secure Shell (SSH): Port 22
+* Simple Mail Transfer Protocol (SMTP): Port 25
+* Post Office Protocol (POP3): Port 110
+* Interactive Mail Access Protocol (IMAP): Port 143
+* Remote Desktop Protocol (RDP): Port 3389
+* Database (SQL Server): Port 1433 
+
 When typing a url and hit enter
 * ![alt text](<attachments/when typing a url.jpeg>)
 
