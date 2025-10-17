@@ -27,19 +27,25 @@ https://github.com/mxssl/sre-interview-prep-guide
 
 ### Linux Boot process
 
-* Power supply initialization - at this stage, the components receive stable power to operate correctly, e.g. motherboard, CPU, GPU, cooling fans.
-* BIOS/UEFI startup and POST - BIOS/UEFI is responsible for POST, error handling, and hardware initialization. POST: Power-on self test to check hardware components working correctly.
-* Boot loader - the job of boot loader is to load the actual operating system kernel into memory. 
-    * OS kernel - is responsible for managing the system's resources and facilitating communication between hardware and software components.
-* Kernel and Init process - so that it can perform tasks, such as managing CPU, memory, and hardware devices; initializing system drivers; preparing user space.
-* Starting system services and daemons - such as networking services, printing services, security services.
-* User login and Desktop Environment - this gives the user a graphical interface to interact with applications and the underlying hardware.
+![alt text](<attachments/boot process.jpeg>)
 
-* Power button puished
-* BIOS -> POST to test the hardware HDD/SSD, keyboard etc, util this part it's indepent from OS. BIOS is used to boot the Operation System
-    * BIOS checks the MBR()
+* Power button pushed
+* BIOS(Basic Input/Output System) run from ROM on motherboard -> POST(Power-on selft test) to test the hardware HDD/SSD, keyboard etc, until this part it's indepent from OS. BIOS is used to boot the Operation System.
+* MBR(Master Boot Record)
+    * Boot order, BIOS loads the OS's MBR, the first sector of drive, only 512 bytes
     ![alt text](attachments/BIOS.png)
-* 
+* Boot loader - lilo/ more morden one is grub(grand unified bootloader)
+    * Grub runs on RAM, not like lilo only for linux system, grub can boot other operational systems
+    * dual boot, for example ubuntu and windows, splash screen
+    1. locate the os kernel on the disk
+    2. load kernel into RAM
+    3. run the kernel code
+* Kernel initialization
+    * kernel is the **core** of the operating system, total control of operating system
+* Kernel loading
+    * take over the control of computer resources and initiating all the background processes.
+    * kernel is gonna load the systemd, before systemd, it's sysVinit
+    * systemd is the parent process of all other processes
 
 
 ### Network
