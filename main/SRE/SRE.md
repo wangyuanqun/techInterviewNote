@@ -31,7 +31,7 @@ https://github.com/mxssl/sre-interview-prep-guide
 
 * Power button pushed
 * BIOS(Basic Input/Output System) run from ROM on motherboard -> POST(Power-on selft test) to test the hardware HDD/SSD, keyboard etc, until this part it's indepent from OS. BIOS is used to boot the Operation System.
-* MBR(Master Boot Record)
+* **MBR(Master Boot Record)**
     * Boot order, BIOS loads the OS's MBR, the first sector of drive, only 512 bytes
     ![alt text](attachments/BIOS.png)
 * Boot loader - lilo/ more morden one is grub(grand unified bootloader)
@@ -46,6 +46,8 @@ https://github.com/mxssl/sre-interview-prep-guide
     * take over the control of computer resources and initiating all the background processes.
     * kernel is gonna load the systemd, before systemd, it's sysVinit
     * systemd is the parent process of all other processes
+* The systemd starts the System services, such as networking services, printing services
+* After the user login, the OS loads the desktop environment
 
 
 ### Network
