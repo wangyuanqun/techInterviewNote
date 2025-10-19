@@ -143,7 +143,7 @@
     * Advan: Reliable and fast adapation to network changes
     * Tip: OSPF is ideal when company's network grows and needs fast response to changes
 
-#### BGP (Borer Gateway Protocol)
+#### BGP (Border Gateway Protocol)
 
 * Path-Vector Protocol: Routes between autonomous systems (AS)
     * What is AS?: A large network or collection of networks under a common policy
