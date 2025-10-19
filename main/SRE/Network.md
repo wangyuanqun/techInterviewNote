@@ -61,6 +61,14 @@
 
 ### IP Addressing
 
+* convert binary to decimal
+    * $2^7 = 128$ ... $2^0 = 1$
+
+* IP address to binary
+    * 192.168.1.8 -> 11000000.10101000.00000001.00001000
+
+* subnet mask
+    * 255.255.255.0 is the same as /24, also tells the network portion and the rest are host portion e.g. 192.168.1.8/24
 
 ### Routing protocols
 
