@@ -44,3 +44,16 @@
     * systemd is the parent process of all other processes
 * The systemd starts the System services, such as networking services, printing services
 * After the user login, the OS loads the desktop environment
+
+
+### Linux troubleshoot
+
+* Linux Performance Analysis in 60,000 Milliseconds
+    * https://netflixtechblog.com/linux-performance-analysis-in-60-000-milliseconds-accc10403c55
+
+![alt text](attachments/free.jpeg)
+* What is Swap?
+    * Emergency memory when all memory exhausted
+    * It exists on the disk/storage, so it's very slow
+
+* **top** to check the overall useage
