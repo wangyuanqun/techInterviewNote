@@ -63,9 +63,19 @@
     * it displays the CPU statistics and IO statistics for devices
     * -x: display extended statistics
     * -z: omit output for any devices for which there was no activity during the sameple period
+    * ![alt text](attachments/iostat.jpeg)
 
 * mpstat -P ALL 1
     * CPU balance
     * -P ALL: list all the cpus, *all* is the global average
+    * ![alt text](attachments/mpstat.jpeg)
+    * 0 means the first cpu
 
-* vmstat 
+* vmstat 1
+    * report virtual memory statistics
+    * ![alt text](attachments/vmstat.jpeg)
+    * r -> fine if smaller than the number of cpus
+
+* pidstat 1
+    * is used for monitoring individual tasks currently being managed by the Linux kernel.
+    * ![alt text](attachments/pidstat.jpeg)
