@@ -13,11 +13,6 @@
 * wildcards
     * ls ba?.out
     * ls \*.out
-* du -sch *: s - summary, c - total disk usage, h - human readable
-* ps aux
-    * a: Displays information about processes from all users.
-    * u: Provides a user-oriented format, showing detailed information about the processes.
-    * x: Lists processes without a controlling terminal, typically those started at boot time and running in the background.
 
 ### Linux Boot process
 
@@ -45,6 +40,12 @@
 
 
 ### Linux troubleshoot
+
+* du -sch *: s - summary, c - total disk usage, h - human readable
+* ps aux
+    * a: Displays information about processes from all users.
+    * u: Provides a user-oriented format, showing detailed information about the processes.
+    * x: Lists processes without a controlling terminal, typically those started at boot time and running in the background.
 
 * Linux Performance Analysis in 60,000 Milliseconds
     * https://netflixtechblog.com/linux-performance-analysis-in-60-000-milliseconds-accc10403c55
