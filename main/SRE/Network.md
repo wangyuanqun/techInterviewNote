@@ -1,8 +1,11 @@
 ### Network troubleshoot
 
 * ping
+    * checks whether a remote device is available or not
 
-* traceroute
+* traceroute (right after if ping isn't ok)
+    * check each hop to find the problematic step
+    * ![alt text](<attachments/traceroute.png>)
 
 ### default port
 
