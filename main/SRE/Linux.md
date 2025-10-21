@@ -14,8 +14,6 @@
     * ls ba?.out
     * ls \*.out
 * du -sch *: s - summary, c - total disk usage, h - human readable
-* top
-* sar -u 4 5: 5 times with 4 secs each
 * ps aux
     * a: Displays information about processes from all users.
     * u: Provides a user-oriented format, showing detailed information about the processes.
@@ -51,9 +49,23 @@
 * Linux Performance Analysis in 60,000 Milliseconds
     * https://netflixtechblog.com/linux-performance-analysis-in-60-000-milliseconds-accc10403c55
 
-![alt text](attachments/free.jpeg)
-* What is Swap?
-    * Emergency memory when all memory exhausted
-    * It exists on the disk/storage, so it's very slow
+* free -h
+    * ![alt text](attachments/free.jpeg)
+        * What is Swap?
+            * Emergency memory when all memory exhausted
+            * It exists on the disk/storage, so it's very slow
 
-* **top** to check the overall useage
+* top to check the overall useage, it provides a dynamic real-time view of a running system.
+
+* uptime: The current time, how long the system has been running, how many user are currently logged on, and the system load averages for the past 1, 5, and 15 minutes.
+
+* iostat -xz 1
+    * it displays the CPU statistics and IO statistics for devices
+    * -x: display extended statistics
+    * -z: omit output for any devices for which there was no activity during the sameple period
+
+* mpstat -P ALL 1
+    * CPU balance
+    * -P ALL: list all the cpus, *all* is the global average
+
+* vmstat 
