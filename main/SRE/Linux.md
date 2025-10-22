@@ -71,7 +71,7 @@
     * CPU balance
     * -P ALL: list all the cpus, *all* is the global average
     * ![alt text](attachments/mpstat.jpeg)
-    * 0 means the first cpu
+    * 0 means the first cpu core
 
 ##### Memory
 
