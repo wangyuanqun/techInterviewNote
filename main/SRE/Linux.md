@@ -13,6 +13,10 @@
 * wildcards
     * ls ba?.out
     * ls \*.out
+* ip route: display the routing table
+* iptables -L:
+* lsblk: list the block devices
+* lsof: list open files
 
 ### Linux Boot process
 

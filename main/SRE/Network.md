@@ -7,6 +7,8 @@
     * check each hop to find the problematic step
     * ![alt text](<attachments/traceroute.png>)
 
+* telnet \<host\> \<port\>: to check the port using
+
 ### default port
 
 * Web (HTTP): Port 80
