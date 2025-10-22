@@ -20,8 +20,8 @@
 * Database (SQL Server): Port 1433 
 
 ### When typing a url and hit enter
+* reference: https://syedali.net/2013/08/18/what-happens-when-you-type-in-www-cnn-com-in-your-browser/
 * DNS resolution: when a domain use is used for the url
-    * https://syedali.net/2013/08/18/what-happens-when-you-type-in-www-cnn-com-in-your-browser/
     * ![alt text](<attachments/when typing a url.jpeg>)
 * netwwork communication
     1. 3 way TCP handshake happens to establish the connection between the client and the server; syn -> sync and ack -> ack
