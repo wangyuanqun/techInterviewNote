@@ -20,7 +20,16 @@
 * Database (SQL Server): Port 1433 
 
 ### When typing a url and hit enter
-* ![alt text](<attachments/when typing a url.jpeg>)
+* DNS resolution: when a domain use is used for the url
+    * https://syedali.net/2013/08/18/what-happens-when-you-type-in-www-cnn-com-in-your-browser/
+    * ![alt text](<attachments/when typing a url.jpeg>)
+* netwwork communication
+    1. 3 way TCP handshake happens to establish the connection between the client and the server; syn -> sync and ack -> ack
+        * the process is the client check its routing table to find the server's entry, if not found, send it to default gateway, the default gateway check its own routing table, if not found, send it to default gateway util reached to **internet gateway which is running BGP**. The BGP routing table contains a list of public ip address that assigned to the ISP.
+    2. Once it reaches to the server, the server will acknowledge the sync packet and send its own; the second part of 3 way handshake. And it sends back the packet in the same way of the client does.
+    3. When the client receives the packet, it sends back an ACK then the connection is established.
+    * How does the client know if the host is in its network or not?
+        * **netmask** 255.255.255.0
 
 #### DNS record explained
 * A records - **Domain name -> IP address**
@@ -38,24 +47,33 @@
 
 ### Network model
 
-* Application layer
+* Application layer: 
     * DNS - protocol
+        * when a domain name is used, then a DNS request is created
     * DHCP - protocol
-    * HTTP - protocol
+    * HTTP - port 80
+    * HTTPS - port 443
 
 =========================================
 * Transport layer
-    * TCP/UDP - protocol
     * port addresses
         * src/des are used for services replications
+    * TCP
+        * three-way handshake
+    * UDP
+        * connectionless 
 
 * Network layer
     * IP - protocol
         * src/des are used to identify the devices on the network
         * how to get the ip address - linux/macOs: ifconfig; windows: ipconfig
     * NAT (for IPv4 lack) - network address translation, able to use 1 public ip address per home/company, within them, use private ip address for different address
+    * ip address
 
 * Data link layer - abstractions that convert bytes to human-read/hear/touch
+    * ARP - address resolution protocol
+        * used to configure which MAC address will be sent to at this layer
+        * broadcasting to the local network with ip address, and the target will send back the MAC address once receive the request
 
 =========================================
 * Physical layer
@@ -64,14 +82,15 @@
 
 ### IP Addressing
 
+* subnet mask
+    * 255.255.255.0 is the same as /24, also tells the network portion and the rest are host portion e.g. 192.168.1.8/24
+    * is used to seperate the IP address into network portion and host portion to define the boundaries
+
 * convert binary to decimal
     * $2^7 = 128$ ... $2^0 = 1$
 
 * IP address to binary
     * 192.168.1.8 -> 11000000.10101000.00000001.00001000
-
-* subnet mask
-    * 255.255.255.0 is the same as /24, also tells the network portion and the rest are host portion e.g. 192.168.1.8/24
 
 ### Routing protocols
 
