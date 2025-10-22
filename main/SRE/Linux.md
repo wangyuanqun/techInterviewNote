@@ -44,6 +44,9 @@
 
 ### Linux troubleshoot
 
+* application is slow
+    * application uses CPUs <br>-> check CPU usage, and CPU uses memory(RAM) to access data quickly <br>-> check memory usage and if swap is used <br>-> next is to check Disk IO <br>-> next to check the network
+
 * du -sch *: s - summary, c - total disk usage, h - human readable
 * ps aux
     * a: Displays information about processes from all users.
@@ -53,21 +56,15 @@
 * Linux Performance Analysis in 60,000 Milliseconds
     * https://netflixtechblog.com/linux-performance-analysis-in-60-000-milliseconds-accc10403c55
 
-* free -h
-    * ![alt text](attachments/free.jpeg)
-        * What is Swap?
-            * Emergency memory when all memory exhausted
-            * It exists on the disk/storage, so it's very slow
+* top to check the overall useage, it provides a dynamic real-time view of a running system. **shift + M** will display the processes in descending oider of memory used. *Default is sorted in CPU*
 
-* top to check the overall useage, it provides a dynamic real-time view of a running system.
+##### CPU
 
 * uptime: The current time, how long the system has been running, how many user are currently logged on, and the system load averages for the past 1, 5, and 15 minutes.
 
-* iostat -xz 1
-    * it displays the CPU statistics and IO statistics for devices
-    * -x: display extended statistics
-    * -z: omit output for any devices for which there was no activity during the sameple period
-    * ![alt text](attachments/iostat.jpeg)
+* pidstat 1
+    * is used for monitoring individual tasks currently being managed by the Linux kernel. CPU
+    * ![alt text](attachments/pidstat.jpeg)
 
 * mpstat -P ALL 1
     * CPU balance
@@ -75,11 +72,24 @@
     * ![alt text](attachments/mpstat.jpeg)
     * 0 means the first cpu
 
+##### Memory
+
 * vmstat 1
     * report virtual memory statistics
     * ![alt text](attachments/vmstat.jpeg)
     * r -> fine if smaller than the number of cpus
 
-* pidstat 1
-    * is used for monitoring individual tasks currently being managed by the Linux kernel.
-    * ![alt text](attachments/pidstat.jpeg)
+* free -h
+    * ![alt text](attachments/free.jpeg)
+        * What is Swap?
+            * Emergency memory when all memory exhausted
+            * It exists on the disk/storage, so it's very slow
+
+##### disk io
+
+* iostat -xz 1
+    * great to check the block devices
+    * -x: display extended statistics
+    * -z: omit output for any devices for which there was no activity during the sameple period
+    * ![alt text](attachments/iostat.jpeg)
+
