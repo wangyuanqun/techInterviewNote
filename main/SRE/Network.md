@@ -50,7 +50,6 @@
 * Application layer: 
     * DNS - protocol
         * when a domain name is used, then a DNS request is created
-    * DHCP - protocol
     * HTTP - port 80
     * HTTPS - port 443
 
@@ -64,6 +63,7 @@
         * connectionless 
 
 * Network layer
+    * routing protocol
     * IP - protocol
         * src/des are used to identify the devices on the network
         * how to get the ip address - linux/macOs: ifconfig; windows: ipconfig
