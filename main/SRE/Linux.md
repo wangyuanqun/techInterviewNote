@@ -47,6 +47,7 @@
 * application is slow
     * application uses CPUs <br>-> check CPU usage, and CPU uses memory(RAM) to access data quickly <br>-> check memory usage and if swap is used <br>-> next is to check Disk IO <br>-> next to check the network
 
+* df
 * du -sch *: s - summary, c - total disk usage, h - human readable
 * ps aux
     * a: Displays information about processes from all users.
