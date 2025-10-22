@@ -6,15 +6,14 @@
 * head -n 20 \<file>
 * tail -n 15 \<file>
 * rmdir \<folder> foler needs to be empty
-* rmdir -v \<folder> verbose
-* rmdir -p \<foler/foler> remove nested folder if all empty
+    * rmdir -v \<folder> verbose
+    * rmdir -p \<foler/foler> remove nested folder if all empty
 * rm -rf \<foler> to remove all the content, -f option to force deletion without prompting, even for write-protected files.
 * mv
 * wildcards
     * ls ba?.out
     * ls \*.out
 * ip route: display the routing table
-* iptables -L:
 * lsblk: list the block devices
 * lsof: list open files
 
