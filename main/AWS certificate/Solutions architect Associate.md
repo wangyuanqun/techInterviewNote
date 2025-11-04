@@ -99,3 +99,63 @@ Use case:
 * Services that takes time to initialize
 * Long-running job
 * Saving the RAM state
+
+### EC2 Storage
+
+* EBS Volume Types
+    * SSD - general - gp2 / gp3
+        * good for developemt and test environment
+    * High-performance SSD - **Provisioned IOPS SSD volumes** - io1/io2
+        * good for database workloads (sensitive to storage perf)
+    * low cost HDD - **Throughput Optimized HDD volumes** - stl
+        * good for big data, data warehousing, log processing
+    * lowest cost HDD - cold HDD volumes - scl
+        * good for lowest cost storage is important
+    * **Only gp2/gp3 and io1/io2 can be used as boot volumes**
+
+* EBS multi- Attach - only for **io1/io2 family**
+    * attach the same EBS to multiple EC2 in the same AZ
+    * **Up to 16 EC2 instances at a time**
+    * applications must manage **concurrent** write operations
+
+* EBS Encryption
+    * encrypt an unencrypted EBS volume
+        * Create a snapshot of the volume
+        * Encrypt the snapshot **(copy snapshot allows encryption)**
+        * create a new EBS volume from the snapshot (the volume will be also be encrypted)
+        * attach the new EBS volume to the original instance
+    * or create EBS volume from unencrypted snapshot by choosing "Encrypt this volume"
+
+* EFS - Elastic File System
+    * managed NFS (network file system) that can be mounted on manyEC2
+    * EFS works with EC2 instances in multi-AZ
+    * Highly available, scalable, expensive (3x gp2), pay per use
+    * **compatible with Linux based AMI (not Windows)**
+    * Use case
+        * content management, web serving, data sharing, Wordpress
+    * Use Lifecycle policy to control **storage tiers**
+        * standard
+        * infrequent access (EFS - IA)
+        * archive
+    * Performance settings
+        * Bursting - basic performance
+        * Elastic - unpredictable I/O, automatically adjust
+        * Provisionsed - customaize the throughput and pay for it
+
+* AMI (Amazon Machine Image) - a **customization** of EC2 Instance
+    * launch option
+        * public AMI: AWS provided
+        * your own AMI: you make and maintain them yourself
+        * AWS Marketplace AMI: someone else make and sell
+    * AMIs are built for a specific AWS region, they are unique for each AWS region. Can't launch EC2 insatnce with the AMI in another region, but can copy the AMI to the target region.
+
+* EC2 Instance Store
+    * EBS volumes are network drives with good but "limited" performance
+    * If neeed **high-performance** hardware disk, use EC2 Instance Store
+        * BetterI/O performance
+        * it loses storage if it's stopped
+        * Good for buffer/cache/scratch data/temprary content
+        * risk of data loss if hardware fails
+        * Backups and Replication are your responsibility
+
+#### Scalability & High Availability
