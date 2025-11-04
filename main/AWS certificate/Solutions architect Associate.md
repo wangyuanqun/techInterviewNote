@@ -174,6 +174,7 @@ Use case:
     * is great for **micro servicews & container-based application** - Docker & Amazon ECS
     * Can use Security Groups to control the inbound and outbound connections
         * for example, for the instances under ALB, edit the inbound rules to only allow the security group that the ALB is in.
+    * The instances can only see the private ip address of the ALB, to get the client's ip addresses, ALB adds a header called **X-Forwarded-For**
 
 * Network LB - ultra high performance
     * it has **one static IP per AZ**, and supports assigning Elastic IP
