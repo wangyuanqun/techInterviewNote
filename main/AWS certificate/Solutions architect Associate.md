@@ -203,3 +203,16 @@ Use case:
 
 * ELB - Cross-Zone LB
     * <img src="attachments/Cross zone LB.jpeg" width=1200/>
+    * by default, enabled for ALB
+    * by default, disabled for NLB and Gateway LB
+
+* ELB - SSL/TLS
+    * An SSL cetificate allows traffic between your clients and your load balancer to be encrypted in transit (in-flight encryption)
+    * SSL - Secure Sockets Layer
+    * TLS - Transport Layer Security, newer version
+    * **SNI Sserver Name Indication**
+        * solves the problem of loading multiple SSL certificates onto one web server
+
+* **Deregistration Delay**
+    * it give some time for your instances to complete the "in-flight requests" while the instance is de-registered or unhealthy
+    * <img src="attachments/Deregisteration delay.jpeg" width=200/>
