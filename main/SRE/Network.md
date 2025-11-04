@@ -35,17 +35,29 @@
 
 #### DNS record explained
 * A records - **Domain name -> IP address**
-![alt text](<attachments/A record.jpeg>)
+
+<img src="attachments/A record.jpeg" width="400"/>
+
 * Name Servers - **second level domain -> responsible Authoritative DNS server**
-![alt text](<attachments/Name server.jpeg>)
+
+<img src="attachments/Name server.jpeg" width="400"/>
+
 * AAAA Records - **Domain name -> IP address**
-![alt text](<attachments/AAAA record.jpeg>)
+
+<img src="attachments/AAAA record.jpeg" width="400"/>
+
 * Mail Server  - **tells email server where to send your messages for your domain**
-![alt text](<attachments/MX Record.jpeg>)
+
+<img src="attachments/MX Record.jpeg" width="400"/>
+
 * PTR Record - **security purpose, check the correct ip address with domain name**
-![alt text](<attachments/PTR Record.jpeg>)
+
+
+<img src="attachments/PTR Record.jpeg" width="400"/>
+
 * CNAME Record - **Alias -> Real**
-![alt text](attachments/CNAME.jpeg)
+
+<img src="attachments/CNAME.jpeg" width="400"/>
 
 ### Network model
 
