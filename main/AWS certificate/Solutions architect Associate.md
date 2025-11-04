@@ -159,3 +159,33 @@ Use case:
         * Backups and Replication are your responsibility
 
 #### Scalability & High Availability
+
+* Elastic Load Balancer is a managed load balancer
+    * AWS guarantees it will be working
+    * AWS takes care of upgrades, maintance, high availablity
+    * AWS provides only a few configuration options
+    * 4 kinds of managed load balancers
+        * Application LB: HTTP HTTPS, WebSocket
+        * Network LB: TCP, TLS(secure TCP), UDP - ultra high performance
+        * Gateway LB: Operates at network layer - IP protocol
+        * not used - Classic LB
+
+* Application LB
+    * is great for **micro servicews & container-based application** - Docker & Amazon ECS
+    * Can use Security Groups to control the inbound and outbound connections
+        * for example, for the instances under ALB, edit the inbound rules to only allow the security group that the ALB is in.
+
+* Network LB - ultra high performance
+    * it has **one static IP per AZ**, and supports assigning Elastic IP
+    * target groups
+        * EC2 instances
+        * **private** IP address
+        * Application Load balancer
+    * **Health check support TCP, HTTP and HTTPS Protocols**
+
+* Gateway Load Balancer
+    * **GENEVE protocol on port 6081**
+    * target groups
+        * EC2 instances
+        * **private** IP address
+    * <img src="attachments/Gateway Load Balancer.jpeg" width=200/>
