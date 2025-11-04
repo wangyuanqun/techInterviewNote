@@ -47,3 +47,32 @@ EC2 instances are virtual servers in the cloud that run your applications and wo
     * AWS Identity and Access Management (IAM) integrates with Amazon EC2 to control access to your instances and other AWS resources.
 8. Container service
     * With Amazon Elastic Container Service (Amazon ECS) and Amazon Elastic Kubernetes Service (Amazon EKS), you can run containerized applications on EC2 instances to provide flexibility and scalability.
+
+
+==== **Solutions Architect Associate Udemy** ============================
+#### Private vs Public vs Elastic IP
+* shouldn't use Elastic IP
+    * not good for architectural decisions
+    * should use random public IP with DNS name
+    * use Load Balancer and don't use public IP
+#### Placement group
+* cluster
+* spread
+* partition
+
+#### Elastic Network Interface (ENI)
+[ENI link](https://aws.amazon.com/blogs/aws/new-elastic-network-interfaces-in-the-virtual-private-cloud/)
+* customised virtual netwok interface in a VPC, that will remain even the associated instance get termninated. Good for failover -> reattach to a different instance
+
+#### EC2 Hibernate
+* stop
+    * the data on the disk (EBS) is kept **intact** in the next start
+* terminate
+    * any EBS volumes (root) also setup to be **destroyed** is lost
+
+<img src="attachments/EC2 Hibernate.jpeg" alt="drawing" width="300"/>
+
+Use case:
+* Services that takes time to initialize
+* Long-running job
+* Saving the RAM state
