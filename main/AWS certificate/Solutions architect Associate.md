@@ -56,13 +56,35 @@ EC2 instances are virtual servers in the cloud that run your applications and wo
     * should use random public IP with DNS name
     * use Load Balancer and don't use public IP
 #### Placement group
-* cluster
-* spread
-* partition
+* **cluster** -clusters instances into a low-latency group in a **single Availability Zone**
+    * Great network (10 Gps bandwidth between instances with Enhanced Networking enabled - recommended)
+    * **Single point failure**
+    * Use case
+        * Big Data job that needs to complete fast
+        * Application that needs extremely low latency and high nework throughput
+* **spread** - spreads instances across underlying hardware (max 7 instances per group per AZ)
+    * can span across multiple AZs in the same region
+    * reduce the rick of simultaneous failure
+    * EC2 are on different physical hardware
+    * Use case
+        * applciation that needs high availablility
+        * critical applications where each instance must be isolated from failure from each other
+* **partition** - spreads instances across many different partitions (which rely on different sets of racks) within an AZ. Scales to 100s of EC2 instances per group (Hadoop, Cassandra, Kafka)
+    * can span across multiple AZs in the same region
+    * A partion failure can affect many EC2s but won't affect other partitions.
+    * Use case:
+        * HDFS, HBase, Cassandra, Kafka
 
 #### Elastic Network Interface (ENI)
 [ENI link](https://aws.amazon.com/blogs/aws/new-elastic-network-interfaces-in-the-virtual-private-cloud/)
-* customised virtual netwok interface in a VPC, that will remain even the associated instance get termninated. Good for failover -> reattach to a different instance
+
+* Primary private IPv4, one or more secondary IPv4
+* One Elastic IP (IPv4) per private IPv4
+* One Public IPv4
+* One or more security groups
+* A MAC address 
+
+Good for failover -> reattach to a different instance
 
 #### EC2 Hibernate
 * stop
