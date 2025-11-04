@@ -94,6 +94,7 @@ Good for failover -> reattach to a different instance
 
 <img src="attachments/EC2 Hibernate.jpeg" alt="drawing" width="300"/>
 
+#### To enable EC2 Hiubernate, the EC2 instance Root Volume type must be an EBS volume and must be encrypted to ensure the protection of sensitive content.
 Use case:
 * Services that takes time to initialize
 * Long-running job
