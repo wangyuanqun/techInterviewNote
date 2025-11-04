@@ -216,3 +216,32 @@ Use case:
 * **Deregistration Delay**
     * it give some time for your instances to complete the "in-flight requests" while the instance is de-registered or unhealthy
     * <img src="attachments/Deregisteration delay.jpeg" width=200/>
+
+* Auto Scaling Group
+    * Scale out (add EC2 instances) to match increased load
+    * Scale in (remove EC2 instances) to match decreased load
+    * Ensure having a minimum and max number of EC2 instace
+    * Automatically register new instances to a load balancer 
+    * Re-create an EC2 instance in case the previous one is terminated (unhealthy)
+    * Free
+    * **Launch Template**
+        * AMI + instance type
+        * EC2 User data
+        * EBS Volume
+        * Security Groups
+        * SSH Key pair
+        * IAM roles for the EC2 instances
+        * Network + subnet information
+        * Load balancer information
+        * min/max size/initial capacity
+
+* ASG policies
+    * Dynamix Scaling
+        * Target Tracking Scaling
+            * example: want the average ASG CPU to stay around 40%
+        * Simple/Step Scaling
+            * example: when a cloudwatch alarm is trigger (CPU > 70%) add 2 new units
+    * Scheduled Scaling
+        * example: increase the min capacity to 10 at 5 pm on Fri
+    * Predictive Scaling
+        * continusly forcast load and schedule scaling ahead
