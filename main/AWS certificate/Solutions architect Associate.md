@@ -271,6 +271,7 @@ Use case:
     * within AZ, Cross AZ or Cross region
     * Replication is **ASYNC**, so reads are eventually consistent
     * RR can be promoted to their own DB
+    * **update SQL connection String**
     * Network cost
         * for RDS RR in the same region different AZ, free
         * for cross region, cost money
@@ -321,6 +322,8 @@ Use case:
         * if the average CPU usage increase, then auto add more RR and Reader Endpoint auto extended to cover the newly added RRs
     * Custom Endpoint replcace for Reader Endpoint
     * Aurora Serverless
+        * good for infrequent unpredictable
+        * no capacity planning needed
     * **Global Aurora Database**
         * **Typical cross-region replication takes less than 1 second**
     * Babefish
@@ -340,3 +343,22 @@ Use case:
     * **involves heavy application code changes**
     * <img src="attachments/ElastiCache.jpeg" width=400/>
     * <img src="attachments/RedisVSMem.jpeg" width=400/>
+    * supports **IAM Authentitation for Redis**
+    * **Redis AUTH**
+    * Redis use case
+        * **Redis Sorted sets** for gaming leaderboards
+
+* **important ports VS RDS databases ports**
+    * important
+        * FTP: 21
+        * SSH: 22
+        * SFTP: 22 (same as SSH)
+        * HTTP: 80
+        * HTTPS: 443
+    * RDS
+        * PostgreSQL: 5432
+        * MySQL: 3306
+        * Oracle RDS: 1521
+        * MSSQL Server: 1433
+        * MariaDB: 3306 (same as MySQL)
+        * Aurora: 5432 (if PostgreSQL compatible) or 3306 (if MySQL compatible)
