@@ -326,5 +326,17 @@ Use case:
     * Babefish
         * allows Aurora postgreSQL to understand commands targeted for MS SQL server
 
-* RDS & Aurora Security
-    * 
+* Amazon RDS Proxy
+    * Improving database effiency by reducing the stress on database resources (CPU & RAM) and minimize open connections and timeouts
+    * Reducing RDS & Aurora failover time by up 66%
+    * RDS Proxy is never publicly accessible (must be accessed from VPC)
+    * helpful for lambda functions
+    * Enforce IAM Authentication for DB, and securely store crendentials in AWS Secrets Manager
+
+* ElastiCache
+    * get managed Redis or Memcached
+    * in-memory
+    * helpful for **read intensive workloads**
+    * **involves heavy application code changes**
+    * <img src="attachments/ElastiCache.jpeg" width=400/>
+    * <img src="attachments/RedisVSMem.jpeg" width=400/>
