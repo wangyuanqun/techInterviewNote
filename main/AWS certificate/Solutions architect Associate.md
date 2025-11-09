@@ -283,5 +283,48 @@ Use case:
             * Zero Down time
             * just click "modify" for the database
 
-* Amazon Aurora
+* RDS Backups
+    * Automated backups
+        * daily full backup
+        * transaction logs are backed-up every 5 mins
+        * 1-35 days of retention set 0 to disable sutomated backups
+    * Manual DB snapshots
+        * manually triggered
+        * retention of backup for as long as you want
+    * trick: in a stopped RDS databse, you will still pay for the storage. If you plan on stopping it for long time, you should snapshot & restore instead.
+* Aurora Backups
+    * only difference
+        * for automated backups
+            * 1 to 35 days (**can't** be disabled)
+
+* RDS & Aurora Restore ptions
+    * Restoring a RDS / Aurora backup or a snapshot
+    * Restoreing MySQL RDS databse from s3
+        * create a backup of your on-premises database
+        * store it on S3
+        * restore the backup file onto a new RDS instance running  MYSQL
+    * Restoring MySQL Aurora cluster from S3
+        * create a backup of your on-premises using **Percona XtraBackup**
+        * store the backup file on S3
+        * restore the backup file onto a new Aurora cluster running  MYSQL
+
+* Aurora Database cloing
+    * faster then snapshot & restore
+    * use copy-on-write protocol
+    * without impact on production database
+
+* **Amazon Aurora**
+    * can support both MySQL and Postgres
+    * Aurora storage automatically grows 10GB to 256TB
+    * support for cross region replication
+    * Aurora Replicas - Auto Scaling
+        * if the average CPU usage increase, then auto add more RR and Reader Endpoint auto extended to cover the newly added RRs
+    * Custom Endpoint replcace for Reader Endpoint
+    * Aurora Serverless
+    * **Global Aurora Database**
+        * **Typical cross-region replication takes less than 1 second**
+    * Babefish
+        * allows Aurora postgreSQL to understand commands targeted for MS SQL server
+
+* RDS & Aurora Security
     * 
