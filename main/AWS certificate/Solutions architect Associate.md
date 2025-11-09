@@ -246,3 +246,42 @@ Use case:
         * example: increase the min capacity to 10 at 5 pm on Fri
     * Predictive Scaling
         * continusly forcast load and schedule scaling ahead
+
+#### RDS - Relational Database Service
+
+* Advantage versus deploying DB on EC2
+    * Automated provision, OS patching
+    * Continuous backups and Point in time restore
+    * monitoring dashboards
+    * Read replicas for improved read performance
+    * Multi AZ setup for Disaster Recovery
+    * Maintenance windows for upgrades
+    * Scaling capability vertical and horizontal
+    * Storage backed by EBS
+    * **BUT you cant ssh into your instance**
+
+* RDS - Storage Auto Scaling
+    * automatically increase storage
+    * have to set **Max storage threshold**
+    * useful for upredicatable workloads
+    * supports all database engine
+
+* RDS Read replica vs RDS Multi-AZ(standby)
+    * up to 15 RRs
+    * within AZ, Cross AZ or Cross region
+    * Replication is **ASYNC**, so reads are eventually consistent
+    * RR can be promoted to their own DB
+    * Network cost
+        * for RDS RR in the same region different AZ, free
+        * for cross region, cost money
+    * RDS Multi AZ - standby (comparison with RR)
+        * **SYNC** replication, different from RR
+        * One DNS name - failover to standby
+        * no manual work
+        * RR can be setup as Multi AZ for Disaster Recovery
+        * From Single-AZ to Multi-AZ
+            * Zero Down time
+            * just click "modify" for the database
+
+* Amazon Aurora
+    * 
