@@ -362,3 +362,69 @@ Use case:
         * MSSQL Server: 1433
         * MariaDB: 3306 (same as MySQL)
         * Aurora: 5432 (if PostgreSQL compatible) or 3306 (if MySQL compatible)
+
+
+### Route 53
+* Hosted Zones
+    * pay for each zone per month
+
+* CNAME vs Alias
+    * CNAME
+        * points a hostname to any other hostname
+        * **only for non root domain**
+    * Alias
+        * points a hostname to an AWS Resources
+        * **works both root domain and non root domain**
+        * **always** a type of AAAA/A
+        * can't saet TTL
+        * cannot set an Alias record for an EC2 DNS name
+
+* Route 53 policies
+    * Simple
+        * If multiple values returned, choose a random one
+        * **can't** be associated with Health Check
+    * Weighted
+        * control the % of the requests that go to each specific resources
+        * if a record set weight as 0, stop sending traffic to this
+        * If all records set weight as 0, all resources returned equally
+    * Failover (Active-Passive)
+    * Latency based
+        * Latency is based on **traffic** between users and AWS Regions
+        * **can** be associated with Health check
+    * Geolocation
+        * **can** be associated with Health Check
+        * is based on user **location**
+        * should create a "default" record
+        * use case:
+            * website localization
+            * restrict content distribution
+            * load balancing
+    * Multi-Value
+        * **can** be associated with Health Check
+        * **not** a subsitiude for an ELB, as it's at client side
+        * return up to 8 healthy records
+    * Geoproximity (Traffic flow feature)
+        * shift more traffic to resources based on defined **bias**
+    * IP-based
+        * provide a list of CIDRs for your clients
+        * use case:
+            * optimize performance
+            * reduce network cost
+        * example:
+            * route end users from a particular ISP to a specific endpoint
+
+* If buy your domain on 3rd party registrar, can still use Route 53 as DNS Service provider
+    1. create a Hosted Zone in Route 53
+    2. Update NS records on 3rd party website to use Route 53 Name Servers
+
+* Route 53 Health Check
+    * HTTP Health Checks are only for public resources
+    * Calculated Health Checks
+        * performaing maintenance to your website without causing all health checks to fail
+    * for **private hosted zones**
+        * Route 53 health checkers are outside the VPC, they **cannot** access the **private** endpoints
+        * Use **CouldWatch Metric** and associate a **CloudWatch Alarm**
+
+* Route 53 & Hybrid DNS
+    * <img src="attachments/Inbound endpoint.jpeg" width=400/>
+    * <img src="attachments/Outbound endpoint.jpeg" width=400/>
