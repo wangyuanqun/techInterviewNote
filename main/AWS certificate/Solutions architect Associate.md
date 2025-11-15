@@ -440,6 +440,8 @@ Use case:
     * max objedct size is 5T, otherwise need multi-part upload
 * Version
     * enable at bucket level
+    * after versioning, the existed files are versioned as **null**
+    * suspend versioning does not delete previous versions
 
 * S3 replication
     * CRR (cross region)
