@@ -484,6 +484,12 @@ Use case:
         * small monthly monitoring and auto-tiering fee
         * move objects automatically between Access Tiers based on usage
         * no retrieval charges
+    * **S3 Express One Zone**
+        * **single availablity Zone storage class**
+        * data stored in **Directory Bucket (bucket in a single AZ)**
+        * 10x better than s3 standard 50% lower cost
+        * use case
+            * latency-sensitive apps, data intensive apps. AI&ML training, HPC (high performace computing)
     * comparison
         * <img src="attachments/s3 storage comparison.jpeg" width=500/>
 
