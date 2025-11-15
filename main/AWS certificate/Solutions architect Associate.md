@@ -428,3 +428,64 @@ Use case:
 * Route 53 & Hybrid DNS
     * <img src="attachments/Inbound endpoint.jpeg" width=400/>
     * <img src="attachments/Outbound endpoint.jpeg" width=400/>
+
+### S3
+
+* Buckets
+    * must have **globally unique name**
+    * created in a region
+* Objects
+    * the key is the FULL path
+    * the key is the compose prefix and object name
+    * max objedct size is 5T, otherwise need multi-part upload
+* Version
+    * enable at bucket level
+
+* S3 replication
+    * CRR (cross region)
+        * compliance, lower latency access, replication across accounts
+    * SRR (same region)
+        * log aggregation, live replication between production and test accounts
+    * after enabled
+        * only **new objects** will be replicated
+        * replicate **existed** objects, using **S3 batch replication**
+    * for **delete** operations
+        * delete markers can be deleted
+        * delete with version ID is replicated
+    * **no chaining of replication**
+
+* S3 storage classes
+    * Standard General purpose
+        * for frequently accessed data
+        * low lantency and high throughput
+        * sustain 2 concurrent facility failures
+        * use case
+            * big data analytics
+            * mobile & gaming application
+            * content distribution
+    * Infrequent Access
+        * less frequently access, but requires rapid access when needed
+        * S3 standard-IA
+            * for disaster recovery, backups
+        * S3 One Zone-IA
+            * for secondary backup copies of on-premise data, or data you can recreate
+    * Glacier Storage
+        * low cost for archiving/backup
+        * Glacier instant retrieval
+            * millisecond retrieval, great for data accessed once a quater
+            * minimum storage duration 90 days
+        * Glacier flexible retrieval
+            * expedite, standard, bulk
+            * minimum storage duration 90 days
+        * Glacier deep archive
+            * standard, bulk
+            * minimum storage duration 180 days
+    * S3 intelligent Tiering
+        * small monthly monitoring and auto-tiering fee
+        * move objects automatically between Access Tiers based on usage
+        * no retrieval charges
+    * comparison
+        * <img src="attachments/s3 storage comparison.jpeg" width=500/>
+
+    * price example
+        * <img src="attachments/price example.jpeg" width=500/>
