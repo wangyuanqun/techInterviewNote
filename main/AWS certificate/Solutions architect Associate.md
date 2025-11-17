@@ -551,3 +551,65 @@ Use case:
         * data available for queries for **15 months**
 
 ### S3 Security
+* S3 Object Encryptyion
+    * Server-Side Encryption (SSE)
+        * Server-Side Encryption with Amazon S3-Managed Keys (**SSE-S3**) - Enabled by Default
+            * <img src="attachments/SSE-S3.jpeg" width=500/>
+        * Server-Side Encryption with KMS Keys stored in AWS KMS (**SSE-KMS**)
+            * <img src="attachments/SSE-KMS.jpeg" width=500/>
+            * It has limitations for speed - KMS quota per sec
+        * Server-Side Encryption with Customer-Provided Keys (**SSE-C**)
+            * <img src="attachments/SSE-C.jpeg" width=500/>
+    * Client-Side Encryption
+        * <img src="attachment" width=500/>
+    * Encryption in transit (SSL/TLS)
+        * S3 exposes **HTTP and HTTPS**
+        * **HTTPS is mandatory for SSE-C**
+        * Use **bucket policy** to force encryption in transit and evaluated before **default encryption**
+
+* **CORS Cross-Origin Resource Sharing**
+    * web browser security that allows you to enable files being retrieved from one S3 bucket in case the request is originating from another origin
+    * Origin = scheme (protocol) + host (domain) + port
+    * If a client makes a cross-origin request on S3 bucket, need to enable the correct CORS headers
+        * you can allow for a specific origin or for *(all origins)
+
+* **S3 - MFA Delete**
+    * **only the bucket owner (root account) can enable/disable MFA Delete**
+    * To use it, **Versioning must be enabled** on the bucket
+    * MFA **will be required** to
+        * Permanently delete an object version
+        * suspend versioning on the bucket
+    * MFA **won't be required** to
+        * enable versioning
+        * list deleted versions
+
+* S3 Access Logs
+    * Warning
+        * **Dont set your logging bucket to be the monitored bucket**, otherwise pay a lot
+
+* S3 - Presigned URLs
+    * allow temporary access of GET/PUT on S3 bucket for an external user without breaking your security
+        * S3 Console - 1 min to 12 hours expiration
+        * AWS CLI - default 3600 sec, max 168 hours expiration
+
+* **S3 Glacier Vault Locck & S3 Object Lock**
+    * WORM (Write once read many)
+    * glacier lock
+        * create a Vault Lock Policy
+    * Object lock
+        * **versioning must be enabled**
+        * retention mode - **compliance**
+            * Object versions **can't be overwritten or deleted by any user, including the root user**
+            * Objects retention modes **can't be changed, and retention periods can't be shortened**
+        * rentention mode - **governance**
+            * Some users have special permissions to change the retention or delete the object. change lock settings
+        * **Legal Hold**
+            * protect the object **indefinitely**
+            * can be modified by IAM permission
+
+* S3 - Access Points
+    * <img src="attachments/access point.jpeg" width=500/>
+* S3 Object Lambda use case
+    * Redacting personally identifiable information for analytics or non production environments.
+    * Converting across data formats, such as converting XML to JSON.
+    * Resizing and watermarking images on the fly using caller-specific details, such as the user who requested the object.
