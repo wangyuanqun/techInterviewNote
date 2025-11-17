@@ -452,12 +452,13 @@ Use case:
         * only **new objects** will be replicated
         * replicate **existed** objects, using **S3 batch replication**
     * for **delete** operations
-        * delete markers can be deleted
+        * delete markers can be replicated
         * delete with version ID is replicated
     * **no chaining of replication**
 
-* S3 storage classes
+* **S3 storage classes**
     * Standard General purpose
+        * 99.99 availability
         * for frequently accessed data
         * low lantency and high throughput
         * sustain 2 concurrent facility failures
@@ -468,8 +469,10 @@ Use case:
     * Infrequent Access
         * less frequently access, but requires rapid access when needed
         * S3 standard-IA
+            * 99.9 ava
             * for disaster recovery, backups
         * S3 One Zone-IA
+            * 99.5 ava
             * for secondary backup copies of on-premise data, or data you can recreate
     * Glacier Storage
         * low cost for archiving/backup
@@ -477,10 +480,10 @@ Use case:
             * millisecond retrieval, great for data accessed once a quater
             * minimum storage duration 90 days
         * Glacier flexible retrieval
-            * expedite, standard, bulk
+            * expedite 1-5 mins, standard 3-5 hous, bulk 5-12 hours
             * minimum storage duration 90 days
         * Glacier deep archive
-            * standard, bulk
+            * standard 12 hours, bulk 48 hours
             * minimum storage duration 180 days
     * S3 intelligent Tiering
         * small monthly monitoring and auto-tiering fee
@@ -497,3 +500,44 @@ Use case:
 
     * price example
         * <img src="attachments/price example.jpeg" width=500/>
+
+* S3 replication rules (with S3 Analytics)
+    * Transaction Actions - move objects to another storage class
+        * move objects to Standard IA class 60 days after creation
+        * move to Glacier for achiving after 6 months
+    * Expiration Actions - configure objects to expire (delete) after some time
+        * Access log file can be set to delete after 365 days
+        * **Can be used to delete old verions of files (if version is enabled)**
+        * Can be used to delete incomplete Multi-Part uploads
+    * Rules can be created for a **certain prefix e.g. s3://mybucket/mp3/\***
+    * Rules can be created for **certain objects Tags e.g. Department: Finance**
+    * **S3 analytics does not work for One-Zone IA or Glacier, only work for standard and Standard IA**
+
+* **S3 Requester Pays**
+    * In general, bucket owner pays for all S3 storage and **data transfer**
+    * **With Requester Pays Bucket**, the requester pays the cost of the request
+        * The requester must be authenticated in AWS (cannot be anonymous)
+
+* S3 Event Notifications
+    * IAM Permissions
+        * for SNS, SQS, Lambda Function, use **resource access policies**
+        * EventBridge is the fourth, advanced filtering, multiple destination.
+
+* S3 Performance improvement
+    * Multi-Part upload
+        * recommand for files > 100MB, must use for files > 5GB
+        * it parallelize uploads to speed up
+    * S3 Transfer Acceleration
+        * Increase transfer speed by transfering file to an **AWS edge location which will forward the data to S3 bucket**
+        * **compatible with multi-part upload**
+    * S3 Byte-Range Fetches
+        * can be used to speed up downloads
+        * can be used to retrieve only partial data
+    
+* S3 Batch Operations
+    * **Encrypt un-encrypted objects**
+    * You can use **S3 inventory** to get object list and use **Athena** to query and filter your objects, then pas it to **Batch Operation** to do the work.
+
+* S3 Storage Lens
+    * <img src="attachments/storage lens.jpeg" width=500/>
+    * 
