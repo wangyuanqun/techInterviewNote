@@ -540,4 +540,14 @@ Use case:
 
 * S3 Storage Lens
     * <img src="attachments/storage lens.jpeg" width=500/>
-    * 
+    * **default dashboard has data across multiple accounts and multiple regions**
+    * **Free Metrics**
+        * available for all users
+        * data available for queries for **14 days**
+    * **Advanced Metrics**
+        * Activity, Advanced Cost Optimization, Advanced Data Protection, Status Code
+        * CloudWatch Publishing
+        * Prefis Aggregation
+        * data available for queries for **15 months**
+
+### S3 Security
