@@ -648,3 +648,46 @@ Use case:
                 * Good fit for non-HTTP use cases, such as gaming (UDP), IoT (MQTT), or Voice over IP
                 * Good for HTTP use cases that require static IP addresses
                 * Good for HTTP use cases that required deterministic, fast regional failover
+
+* AWS Snowball
+    * Highly-secure, portable **devices** to collect and process data at the edge, and migrate data into and out of AWS
+        * Storage optimized device has 210 TB SSD
+        * Compute optimized device has 28 TB SSD
+        * **Both have the same cpus and memory**
+        * **If it takes more than a week to transfer over the network, use Snowball devices**
+        * **Snowball cannot import to Glacier directly**
+            * import to S3 first, then use S3 lifecycle policy
+
+* **Amazon FSx**
+    * FSx for Windows
+        * Can be mounted on **Linux EC2 Instance**
+        * support **Microsoft's Distributed File System (DFS) Namespaces**
+        * Can be **accessed** from your on-premises infrastructure (VPN or Direct Connect)
+        * **Multi-AZ (high availability)**
+        * Data is backed-up daily to S3
+    * FSx for Lustre
+        * **High Performance Computing (HPC)**
+        * **Seamless integration with S3**
+            * can read S3
+            * can write output of the computations back to S3
+        * Can be **used** from on-premises servers (VPN or Direct Connect)
+        * File System Deployment Options
+            * **Scratch File System**
+                * Temporary storage
+                * Data is not replicated
+                * High burst
+                * used for optimized cost
+            * **Persistent File System**
+                * Long-term storage
+                * Data is replicated within **same AZ**
+                * used for sensitive data
+    * FSx for NetApp ONTAP
+        * **compatible with NFS, SMB, iSCSI protocol**
+        * Point-in-time instantaneous cloning
+    * FSx for OpenZFS
+        * **compatible with NFS**
+        * Point-in-time instantaneous cloning
+
+* AWS Storage Gateway
+    * used for long-term migration from on-premis to cloud
+    * <img src="attachments/storage gateway.jpeg" width=600/>
