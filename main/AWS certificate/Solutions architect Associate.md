@@ -613,3 +613,38 @@ Use case:
     * Redacting personally identifiable information for analytics or non production environments.
     * Converting across data formats, such as converting XML to JSON.
     * Resizing and watermarking images on the fly using caller-specific details, such as the user who requested the object.
+
+* CloudFront
+    * **CDN**
+    * **Improves read performance, content is cached at the edge**
+    * DDoS protection, integration with Shield, AWS Web Application Firewall
+    * **Cloud Front vs S3 Cross Region Replication**
+        * CloudFront:
+            * Global Edge network
+            * Files are cached for a TTL (maybe a day)
+            * **Great for static content that must be available everywhere**
+        * S3 CRR
+            * Must be setup for each region you want replication to happen
+            * Files are updated in near real-time
+            * Read only
+            * **Great for dynamic content that needs to be available at low-latency in few regions**
+    * **Pricing class**
+        1. Price Class All: all regions – best performance 
+        2. Price Class 200: most regions, but excludes the most expensive regions
+        3. Price Class 100: only the least expensive regions
+        * <img src="attachments/cloudfront pricing.jpeg" width=600/>
+    * **Global Accelerator vs CloudFront**
+        * same
+            * They both use the AWS global network and its edge locations around the world
+            * Both services integrate with AWS Shield for DDoS protection
+        * different
+            * CloudFront
+                * Improves performance for both cacheable content
+                * Dynamic content (such as API acceleration and dynamic site delivery)
+                * Content is served at the edge
+            * Global Accelerator
+                * Improves performance for a wide range of applications over TCP or UDP
+                * Proxying packets at the edge to applications running in one or more AWS Regions
+                * Good fit for non-HTTP use cases, such as gaming (UDP), IoT (MQTT), or Voice over IP
+                * Good for HTTP use cases that require static IP addresses
+                * Good for HTTP use cases that required deterministic, fast regional failover
