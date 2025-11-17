@@ -691,3 +691,13 @@ Use case:
 * AWS Storage Gateway
     * used for long-term migration from on-premis to cloud
     * <img src="attachments/storage gateway.jpeg" width=600/>
+
+* AWS Transfer Family
+    * used when dont want to use S3 or EFS APIs
+    * <img src="attachments/transfer family.jpeg" width=600/>
+
+* AWS DataSync
+    * **File permissions and metadata are preserved**
+    * can synchronize between anything, but it's not continuous. It's a scheduled task that runs hourly, daily, weekly. **need to run the DataSync agents if connecting to an NFS or SMB server**
+    * <img src="attachments/datasync.jpeg" width=600/>
+    * snowcone is a device in the AWS Anow Family
