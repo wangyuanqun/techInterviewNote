@@ -768,3 +768,22 @@ Use case:
         * Amazon FXs for NetApp ONTAP
 
 * **App2Container - used to migrate Java .Net to Amazon**
+
+
+### Serverless
+
+* Lambda limits - **per region**
+    * execution time is 15 mins
+    * size of compressed deployed is 50 MB
+    * size of uncompressed deployed is 250 MB
+    * size of environment variable is 4 KB
+    * **The lambda function must be deployed in your VPC, because RDS Proxy is never public accessible**
+
+* **Amazon DynamoDB**
+    * is made of **Tables**
+    * **in DynamoDB you can rapidly evolve schemas**
+    * Advanced feature - **DAX**
+        * **solve read congestion by caching, microseconds latency for cached data**
+        * DynamoDB stream vs Kinesis data streams
+            * <img src="attachments/dynamoDB vs Kinesis data stream.jpeg" width=600/>
+        * **global table requires DynamoDB stream to be enabled**
