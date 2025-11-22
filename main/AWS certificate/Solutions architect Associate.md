@@ -755,3 +755,16 @@ Use case:
 * Amazon MQ
     * use **EFS** for HA
     * support open protocols when **migrating** for **RabbitMQ and ActiveMQ**
+
+### Containers
+
+* ECS
+
+* EKS
+    * Need to specify **StorageClass** on your EKS cluster
+        * Amazon EBS
+        * **Amazon EFS (Only one that works with Fargate)**
+        * Amazon FSx for Lustre
+        * Amazon FXs for NetApp ONTAP
+
+* **App2Container - used to migrate Java .Net to Amazon**
