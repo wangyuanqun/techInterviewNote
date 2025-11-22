@@ -787,3 +787,4 @@ Use case:
         * DynamoDB stream vs Kinesis data streams
             * <img src="attachments/dynamoDB vs Kinesis data stream.jpeg" width=600/>
         * **global table requires DynamoDB stream to be enabled**
+        * **The maximum item size in DynamoDB is 400 KB**
