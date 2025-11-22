@@ -701,3 +701,57 @@ Use case:
     * can synchronize between anything, but it's not continuous. It's a scheduled task that runs hourly, daily, weekly. **need to run the DataSync agents if connecting to an NFS or SMB server**
     * <img src="attachments/datasync.jpeg" width=600/>
     * snowcone is a device in the AWS Anow Family
+
+### Message Queue
+
+* SQS - queue model - standard
+    * used to **decouple applications**
+    * default duration is 4 days upto 14 days
+    * size upto 1024 KB
+    * can have duplicate messages - at least once delivery
+    * can have out of order message
+    * **SQS with AScalingG**, CloudWatch metric - Queue Length to scale the instances
+        * to avoid EC2 instances overwhelm the database
+    * Encryption
+        * in-flight with HTTPS API
+        * at-rest with KMS
+        * client side
+    * Access Control: IAM policies
+    * SQS Access Policies
+        * for corss-account access
+        * to allow other services to write to an SQS queue
+    * **Message Visibility Timeout**
+        * if a message used by a consumer will have **30 sec** invisible time before it's visible again
+        * call changeMessageVisility API to get more time
+    * **Long polling**
+        * **it decreases the number of API calls made to SQS while increasing the efficiency and reducing latency of your application**
+        * use WaitTimeSeconds to set the time that consumer needs to wait, 20 secs prefered
+    * **FIFO Queue**
+        * the message is **ordered different from standard**
+        * limited throughput: 300 msg/s without **batching**, 3000 msg/s with
+
+* SNS - publish/subscribtion model
+    * each subscribe to this will get **all messages**
+        * example of subscriber could be SQS
+        * many AWS services can send data to SNS
+    * security is the same as SQS
+    * use **filter** to filter messages
+* SNS and SQS - Fan Out pattern
+    * example: S3 only allow one event notification
+        * S3 -> SNS -> multiple SQS and/or Lambda 
+
+* Kinesis data streams - **real-time** streaming model
+    * data can't be deleted
+    * data up to 1MB
+    * Capacity Modes
+        * Provisioned mode
+        * On-demand mode
+
+* Amazon Data Firehose - **Near Real-Time**
+    * <img src="attachments/data firehouse.jpeg" with=600/>
+
+* <img src="attachments/kinese vs firehouse.jpeg" width=600/>
+
+* Amazon MQ
+    * use **EFS** for HA
+    * support open protocols when **migrating** for **RabbitMQ and ActiveMQ**
