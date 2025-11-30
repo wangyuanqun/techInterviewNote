@@ -788,3 +788,30 @@ Use case:
             * <img src="attachments/dynamoDB vs Kinesis data stream.jpeg" width=600/>
         * **global table requires DynamoDB stream to be enabled**
         * **The maximum item size in DynamoDB is 400 KB**
+
+### Data & Analytics
+
+* Athena
+    * **Serverless** query service to analyze data in **S3**
+    * Performance improvement
+        * Use **columnar data** for cost savings (**less scan**)
+            * recommanded for **ORC, Parquet**
+        * Compress data for smaller retrievals
+        * Partition datasets in S3
+        * Use larger files to minimize overhead
+    * **Federated Query** - lambda function
+        * allows you run SQL queries across all sources, and store results back to S3
+
+* Redshift
+    * **Provisioned cluster and Serverless cluster**
+    * PostgreSQL, **not used for OLTP(online transaction processing)**
+    * used for **OLAP(online analytical processing)**
+    * Columnar storage - better performance
+    * has **multi-AZ** mode for some clusters
+    * how to load data to it
+        * **Large inserts are much better**
+        * Kinesis Data Firehouse -> Redshift
+        * EC2 Instance (JDBC driver) -> Redshift (large batches to write is preferred)
+    * **Redshift Spectrum - query data in S3 without loading**
+        * must have Redshift cluster ready
+
