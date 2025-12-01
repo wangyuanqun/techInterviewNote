@@ -815,3 +815,14 @@ Use case:
     * **Redshift Spectrum - query data in S3 without loading**
         * must have Redshift cluster ready
 
+* OpenSearch
+    * common used as a complement to another database
+    * **search any field, even partially matches**
+    * managed cluster or severless cluster
+    * **does not** natively support SQL (can be enabled via plugin)
+
+* EMR - Elastic MapReduce
+    * creating **Hadoop clusters**
+    * used for **data processing, machine learning, web indexing**
+    * made of **hunderds of EC2 Instances**
+
