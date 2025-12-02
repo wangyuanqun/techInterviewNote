@@ -1,12 +1,5 @@
 
 
-
-## EC2
-
-### What is Amazon EC2?
-
-EC2 instances are virtual servers in the cloud that run your applications and workloads. Each instance is like a virtual computer with its own processing power, memory, and storage.
-
 ### How is EC2 used to architect a cloud solution?
 
 ![alt text](<attachments/EC2.png>)
