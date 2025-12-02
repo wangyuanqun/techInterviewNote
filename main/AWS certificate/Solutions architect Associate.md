@@ -863,3 +863,34 @@ Use case:
         * data is store on **EBS for as long as you want**
     * MSK serverless
         * without managing capacity
+
+### AI
+
+* Rekognition
+    * Find objects, people, text, scenes in images and videos using ML
+    * Facial analysis and facial search
+    * **Content Moderation - racial, pornography**
+
+* Transcribe
+    * **conevrt speech to text**
+    * **Redactio** to **remove** Personal Identifiable Information(**PII**)
+    * support automatic multiple lanuage identifcation while oonverting
+
+* Polly
+    * **turn text to speech**
+    * Upload **Pronunciation lexicons** and use them in **SynthesizeSpeech** operation
+        * e.g. AWS to "Amazon Web Service"
+    * Use **Speech Synthesis Markup Launage (SSML)** to enable more customization
+        * e.g. phonetic pronunciation
+
+* Comprehend
+    * **NLP**
+
+* SageMaker to **build** ML models
+
+* Kendra - **document search service**
+
+* Personalize - **real-time** personalized recommandations
+
+* Textract - extract informaion from driver liscense
+
