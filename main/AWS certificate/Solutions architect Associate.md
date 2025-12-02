@@ -825,4 +825,40 @@ Use case:
     * creating **Hadoop clusters**
     * used for **data processing, machine learning, web indexing**
     * made of **hunderds of EC2 Instances**
+    * Node type & purchasing
+        * master - management - long running
+        * core - run tasks and store data - long running
+        * task (optional): just run tasks - usually spot
+        * purchasing
+            * same as EC2 instance
+    * **can have long running cluster, or temporary(transient) cluster**
 
+* QuickSight
+    * **serverless BI(business intelligence) service to create interactive dashboards**
+    * **SPICE engine (im-memory) is only used when data is directly imported to QuickSight**
+    * Enterprise edition: possible to setup **Column-level security**
+    * Define Users (standard version) and Groups (enterprise version)
+        * **these only exist within QuickSight, noto IAM!!**
+
+* Glue
+    * serverless service to manage **extract, transform, and load (ETL) service**
+    * <img src="attachments/convert data to parquet format with glue.jpeg" width=600/>
+    * **Glue Job Bookmarks: prevent re-processing old data**
+    * **Glue DataBrew: clean and normalize data using pre-built transformat**
+    * **Glue studio: new GUI**
+    * **Glue streaming ETL: instead run batch jobs, can read through database**
+
+* Lake Formation
+    * **Fine-grained Access Control for your applications (row and column-level )**
+    * stored in S3, but sources can be from S3, RDS, Aurora, on-premises
+
+* Apache Flink
+    * **does not read from Amazon Data Firehose**
+
+* Amazon MSK - Kafka
+    * **alternative to Amazon Kinesis**
+        * MSK suport higher size than 1 MB
+    * Fully managed Apache Kafka
+        * data is store on **EBS for as long as you want**
+    * MSK serverless
+        * without managing capacity
