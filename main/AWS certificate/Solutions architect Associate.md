@@ -806,11 +806,12 @@ Use case:
     * **Provisioned cluster and Serverless cluster**
     * PostgreSQL, **not used for OLTP(online transaction processing)**
     * used for **OLAP(online analytical processing)**
-    * Columnar storage - better performance
-    * has **multi-AZ** mode for some clusters
+    * **Columnar storage** - better performance
+    * enable **automated snapshots, configure automatically copy snapshots to another AWS region**
     * how to load data to it
         * **Large inserts are much better**
         * Kinesis Data Firehouse -> Redshift
+        * S3 -> Redshift, with **enhanced VPC rouyting through VPC only**
         * EC2 Instance (JDBC driver) -> Redshift (large batches to write is preferred)
     * **Redshift Spectrum - query data in S3 without loading**
         * must have Redshift cluster ready
