@@ -883,14 +883,12 @@ Use case:
     * Use **Speech Synthesis Markup Launage (SSML)** to enable more customization
         * e.g. phonetic pronunciation
 
-* Comprehend
-    * **NLP**
-
-* SageMaker to **build** ML models
-
-* Kendra - **document search service**
-
-* Personalize - **real-time** personalized recommandations
-
-* Textract - extract informaion from driver liscense
+    * Translate: translations
+    * Lex: build conversational bots – chatbots 
+    * Connect: cloud contact center
+    * Comprehend: natural language processing
+    * SageMaker: machine learning for every developer and data scientist
+    * Kendra: ML-powered search engine (**document search service**)
+    * Personalize: real-time personalized recommendations
+    * Textract: detect text and data in documents (extract informaion from driver liscense)
 
