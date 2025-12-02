@@ -892,3 +892,5 @@ Use case:
     * Personalize: real-time personalized recommendations
     * Textract: detect text and data in documents (extract informaion from driver liscense)
 
+### AWS Monitoring & Audit: CloudWatch, CloudTrail & Config
+
