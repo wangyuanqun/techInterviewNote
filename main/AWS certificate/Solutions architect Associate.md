@@ -1,52 +1,8 @@
 
 
-
-## EC2
-
-### What is Amazon EC2?
-
-EC2 instances are virtual servers in the cloud that run your applications and workloads. Each instance is like a virtual computer with its own processing power, memory, and storage.
-
 ### How is EC2 used to architect a cloud solution?
 
 ![alt text](<attachments/EC2.png>)
-
-1. Internet gateway
-    * This is a connection point that allows users to access your public resources and allows these resources to communicate with the internet
-2. Application Load Balancer
-    * This distributes the incoming traffic across multiple EC2 instances for better performance and avalibility.
-3. Public Subnet
-    * It is a network segments that contains public-facing resources like NAT gateways and load balancers.
-4. NAT gateway
-    * It enables private resources to access the internet while preventing unwanted inbound connections (connections from an external network like internet).
-5. App subnet
-    * This is a private network segment where EC2 instances run your applicaiton code securely.
-6. Auto Scaling group
-    * It automatically adjusts the number of EC2 instances based on the user demand.
-7. Amazon EBS volumes
-    * Amazon Elastic Block Store (Amazon EBS) storage volumes are attached to EC2 instances to store application data.
-8. Database subnet
-    * A highly secured network segment that dedicated to database resources.
-9. Amazon Aurora DB (primary and replica)
-    * It is a managed databse service that provides both read and write capabilities with automatic replication.
-
-### What AWS services integrate with Amazon EC2?
-1. Storage
-    * EC2 instances can be paired with Amazon EBS for persistent block storage so you can store and access data independently of the instance lifecycle.
-2. Networking
-    * With Amazon Virtual Private Cloud (Amazon VPC), you can create isolated network environments for EC2 instances to control access and improve security.
-3. Load balancing
-    * Elastic Load Balancing (ELB) distributes incoming traffic across multiple EC2 instances to improve availability and fault tolerance.
-4. Amazon EC2 Auto scaling
-    * Amazon EC2 Auto Scaling automatically adjusts the number of instances based on demand to ensure optimal performance and cost-efficiency.
-5. Database service
-    * EC2 instances can connect to managed database services, such as Amazon Relational Database Service (Amazon RDS) or Amazon DynamoDB, for structured data storage and retrieval.
-6. Monitoring and management
-    * Amazon CloudWatch provides monitoring and observability for EC2 instances to help you track performance metrics and set up alarms.
-7. Security
-    * AWS Identity and Access Management (IAM) integrates with Amazon EC2 to control access to your instances and other AWS resources.
-8. Container service
-    * With Amazon Elastic Container Service (Amazon ECS) and Amazon Elastic Kubernetes Service (Amazon EKS), you can run containerized applications on EC2 instances to provide flexibility and scalability.
 
 
 ==== **Solutions Architect Associate Udemy** ============================
