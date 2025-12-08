@@ -894,3 +894,12 @@ Use case:
 
 ### AWS Monitoring & Audit: CloudWatch, CloudTrail & Config
 
+#### CloudWatch
+
+
+#### CloudTrail
+
+
+
+#### AWS Config
+
