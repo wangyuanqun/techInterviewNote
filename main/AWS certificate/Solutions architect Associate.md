@@ -704,7 +704,7 @@ Use case:
         * On-demand mode
 
 * Amazon Data Firehose - **Near Real-Time**
-    * <img src="attachments/data firehouse.jpeg" with=600/>
+    * <img src="attachments/data firehouse.jpeg" width=600/>
 
 * <img src="attachments/kinese vs firehouse.jpeg" width=600/>
 
@@ -890,7 +890,7 @@ Use case:
         * search and analyze log data in CloudWatch Logs
         * can query **multiple Log Groups in differenct AWS accounts**
         * a query engine. **NOT a Real-Time engine**
-    * <img src="attachments/cloudwatch logs aggregation.jpeg" wdith=600/>
+    * <img src="attachments/cloudwatch logs aggregation.jpeg" width=600/>
 
 * CloudWatch Agent
     * by default no logs from EC2 will go to CloudWatch, need to run a CloudWatch Agent on EC2/On-premises. Make sure **correct IAM role**
@@ -904,9 +904,74 @@ Use case:
         * send to CloudWatch Logs
         * **centralized configuration using SSM Parameter Store**
 
+* CloudWatch Alarms
+    * used to trigger notification for any metric
+    * Target
+        * Stop, Terminate, Reboot or Recover an EC2 instance
+        * trigger Auto Scaling Action
+        * Send notification
+    * Composite Alarms
+        * **used to monitor the state of multiple other alarms**
+        * helpful to **reduce alarm noise** by creating it
+    * To test alarms and notifications
+        * **aws cloudwatch set-alarm-state --alarm-name "myalarm" --state-value ALARM --state-reason "testing purposes"**
+
+* EventBridge (formerly CloudWatch Events)
+    * Schedule: Cron jobs (scheduled scripts)
+    * Event Pattern: Event rules to react to a service doing smth
+        * e.g. IAM root user sign in event -> SNS topic with notification
+    * <img src="attachments/eventbridge rules.jpeg" width=600/>
+    * **archive events** sent to an event bus
+    * **replay archived events** for debug
+    * **resource-based policy**
+        * manage permissions for a specific Event bus
+        * use case: **aggregate all events** from your AWS Organization in a single AWS account or AWS region
+
+* CloudWatch **Container Insights**
+    * Collect, aggregate, summarize **metrics and logs fom containers**
+    * available for containers on
+        * ECS, EKS, Kubernetes platforms on EC2, Fargate (both for ECS and EKS)
+    * **In Amazon EKS and Kubernetes, CloudWatch Insights is using a containerized version of the CloudWatch Agent to discover containers**
+
+* CloudWatch **Lambda Insights**
+    * for **serverless apps** runs on AWS Lambda
+
+* CloudWatch **Contributor Insights**
+    * Analyze log data and create time series that display contributor data
+        * **see metrics about the top-N contributors**
+    * works for any **AWS-generated logs**
+    * **build your rules from scratch OR leverages your CloudWatch Logs**
+
+* CloudWatch **Application Insights**
+    * **provide automated dashboards that show poential problems with monitored apps, to help isolate ongoing issues**
+    * Powered by SageMaker
+    * Findings and alerts are sent to **EventBridge (CloudWatch Events)and SSM OpsCenter**
+
 #### CloudTrail
+* **it provides governance, compliance and audit for your AWS account**
+* **get a history of events / API calls made within your AWS account**
+* **A trail can be applied to All Regions (default) or a single region**
+* **can only hold 90 days logs, for longer access, store them in S3 and use Athena to analyse**
 
-
+* CloudTrail Events
+    * Management Events
+        * Operations that are performed on resources in your AWS account
+        * **by default, trails are configured to log management events**
+        * can seperate **Read evvents and Write Events**
+    * Data Events
+        * **by default, data events are not logged due to high volumes of operations**
+        * S3 object-level activity, can seperate **Read evvents and Write Events**
+    * CloudTrail Insights Events
+        * **pay to enable CloudTrail Insights to detect unusual activity**
+        * it analyze normal management events to create baseline, then **continuously analyze _write_ events to detect unusual patterns**
 
 #### AWS Config
 
+* auditing and recording **compliance** of your AWS resources
+* is a per-region service
+* can use AWS managed config rules
+* can make custom config rules (**must be defined in AWS Lambda**)
+* **Config Rules does not prevent actions from happening**
+* **Remediations** - can remediate for non-compliant resources
+    * can set remediation retries
+* can send to EventBridge/SNS
