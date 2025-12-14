@@ -48,7 +48,7 @@ Good for failover -> reattach to a different instance
 * terminate
     * any EBS volumes (root) also setup to be **destroyed** is lost
 
-<img src="attachments/EC2 Hibernate.jpeg" alt="drawing" width="300"/>
+<img src="attachments/EC2 Hibernate.jpeg" width=200/>
 
 #### To enable EC2 Hiubernate, the EC2 instance Root Volume type must be an EBS volume and must be encrypted to ensure the protection of sensitive content.
 Use case:
@@ -145,7 +145,7 @@ Use case:
     * target groups
         * EC2 instances
         * **private** IP address
-    * <img src="attachments/Gateway Load Balancer.jpeg" width=200/>
+    * <img src="attachments/Gateway Load Balancer.jpeg" width=150/>
 
 * ELB - sticky Sessions
     * This works with **ALB and NLB**
@@ -741,7 +741,7 @@ Use case:
     * Advanced feature - **DAX**
         * **solve read congestion by caching, microseconds latency for cached data**
         * DynamoDB stream vs Kinesis data streams
-            * <img src="attachments/dynamoDB vs Kinesis data stream.jpeg" width=600/>
+            * <img src="attachments/dynamoDB vs Kinesis data stream.jpeg"/>
         * **global table requires DynamoDB stream to be enabled**
         * **The maximum item size in DynamoDB is 400 KB**
 
@@ -860,7 +860,7 @@ Use case:
 * CloudWatch Metric Streams
     * stream the metrics to a destination with **near-real-time delivery**
         * **Kinesis data firehouse** (and then its destination)
-            * <img src="attachments/stream metrics.jpeg" width=500/>
+            * <img src="attachments/stream metrics.jpeg" width=250/>
         * 3rd party service provider, splunk datadog,dynatrace
     * can **filter metrics** to only stream subset of them
 
@@ -975,3 +975,75 @@ Use case:
 * **Remediations** - can remediate for non-compliant resources
     * can set remediation retries
 * can send to EventBridge/SNS
+
+### IAM Advanced
+
+* AWS Organizations
+    * the main account is **management account**
+    * Other accounts are **member accounts**
+    * pricing benefits from aggregated usage
+    * **Shared reserved instancces and Savings Plans discounts across accounts**
+    * API is available to automate AWS account creation
+
+* Security: Service Control Policies (SCP)
+    * **do not** apply to management account
+    * must have an explicit allow from the root account, does not allow anything by default - like IAM
+    * SCP Hierarchy
+        * <img src="attachments/scp hierarchy.jpeg" width=800/>
+
+* Tag Policies
+    * help **maintain tags consistent across accounts**
+    * Use EventBridge to monitor non-compliant tags
+
+* **aws:PrincipalOrgID** in json
+    * can be used in any resource policies to restrict access to accounts that are member of an AWS Organization
+
+* IAM Roles VS Resource Based Policies
+    * <img src="attachments/iam vs resource policy.jpeg" width=350/>
+        
+        * **when you assume a role (user, application, otr service), you give up all your original permissions and take the permissions assigned to the role**
+    * **resource-based policy**: Lambda, SNS, SQS, S3 bucket
+    * **IAM role**: Kinesis stream, EC2, Auto Scaling, ECS, Run command, System manager
+
+* IAM Permission Boundaries
+    * **Only support for users and roles (NOT groups)**
+    * used to set the **max** permission an IAM entity can get
+    * <img src="attachments/iam boundary example.jpeg"/>
+        
+        * no permission because the *iam:CreateUser* is out of the Permission Boundary
+    
+    * <img src="attachments/effective part.jpeg" width=200/>
+
+* IAM Identity Center
+    * one login for all your
+        * **AWS accounts in AWS Organizations**
+        * Business cloud apps
+        * SAML2.0=enabled apps
+        * EC2 Windows Instances
+    * <img src="attachments/iam identity center login.jpeg"/>
+
+    * <img src="attachments/iam identity center relation.jpeg"/>
+
+    * Attribute-Based Access Control (ABAC)
+        * store permissions in IAM Identity Center Identity Store, so that anyone login through IAM Identity Center can assume that role
+
+* AWS Directory Services
+    * **AWS Managed Microft AD**
+        * support MFA
+        * create your own AD in AWS, manage uers locally
+        * build _trust_ connections with your on-premise AD
+    * **AD Connector**
+        * support MFA
+        * manage user on on-premises
+        * Directory Gateway (proxy) to redirect to on-premise AD
+    * **Simple AD**
+        * **standalone, can't be joined with on-premise**
+        * can create Windows EC2 instance
+
+* AWS Control Tower
+    * **set up and govern a secure and compliant <u>multi-account AWS environment</u>**
+    * it uses AWS Organizations to create accounts
+    * Benefits: automate, dashboard, Guardrails
+    * Guardrails
+        * **Preventive Guardrail - using SCPs (e.g. restrict regions across all your accounts)**
+        * **Dective Guardrail - using AWS Config (e.g. identify untagged resources)**
