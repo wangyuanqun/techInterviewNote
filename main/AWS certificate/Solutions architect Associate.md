@@ -851,7 +851,58 @@ Use case:
 ### AWS Monitoring & Audit: CloudWatch, CloudTrail & Config
 
 #### CloudWatch
+* **Metric** is variale to monitor(CPU, network..)
+    * Metric belongs to **namespace**
+    * **Dimention** is an attribute of a metric(instance id, enviroment..)
+    * Metric has **timestamps**
+    * can create CloudWatch dashboards
+    * can create **CloudWatch Custom Metrics**(RAM for example)
+* CloudWatch Metric Streams
+    * stream the metrics to a destination with **near-real-time delivery**
+        * **Kinesis data firehouse** (and then its destination)
+            * <img src="attachments/stream metrics.jpeg" width=500/>
+        * 3rd party service provider, splunk datadog,dynatrace
+    * can **filter metrics** to only stream subset of them
 
+* CloudWatch Logs - store logs
+    * log group: usually represent an app
+    * log stream: instances within app/log files/containers
+    * log **expiration policy (never expire, 1 dy - 10 yr)**
+    * **Can get logs from**
+        * SDK, CloudWatch Logs Agent,CloudWatch Unified Agent
+        * Elastic Beanstalk: collection of logs from app
+        * ECS: collection from containers
+        * AWS Lambda: collection from function logs
+        * VPC Flow Logs: VPC specific logs
+        * API Gateway
+        * CloudTrail based on filter
+        * Route53: Log DNS queries
+    * **Can send logs to**
+        * Amazon S3 (exports)
+            * can take **up to 12 hours** to be available for export
+            * The API call is **CreateExportTask**
+            * **Use Logs Subscription instead for real time/near-real time**
+        * Logs Subscriptions
+            * <img src="attachments/log subscribtion filter.jpeg" width=600/>
+    * encrypted by default
+    * can setup **KMS-based** encryption with your own keys
+    * **Used in CloudWatch Logs Insights**
+        * search and analyze log data in CloudWatch Logs
+        * can query **multiple Log Groups in differenct AWS accounts**
+        * a query engine. **NOT a Real-Time engine**
+    * <img src="attachments/cloudwatch logs aggregation.jpeg" wdith=600/>
+
+* CloudWatch Agent
+    * by default no logs from EC2 will go to CloudWatch, need to run a CloudWatch Agent on EC2/On-premises. Make sure **correct IAM role**
+    * **CloudWatch Logs Agent**
+        * Old version of the agent
+        * CPU, disk, network(high level)
+        * can **only** send to CloudWatch Logs
+    * **CloudWatch Unified Agent**
+        * Collect **additional system-level metrics**
+            * CPU, Disk, RAM, Netstat, Process, Swap
+        * send to CloudWatch Logs
+        * **centralized configuration using SSM Parameter Store**
 
 #### CloudTrail
 
