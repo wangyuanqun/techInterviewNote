@@ -1047,3 +1047,32 @@ Use case:
     * Guardrails
         * **Preventive Guardrail - using SCPs (e.g. restrict regions across all your accounts)**
         * **Dective Guardrail - using AWS Config (e.g. identify untagged resources)**
+
+### AWS Security and Encryption (Exam heavy)
+
+#### Encryption 101
+* Encryption in flight (TLS/SSL)
+    * Data is encrypted before sending and decrypted after receiving
+    * Encryption in flight ensures no MITM(man in the middle attach) happen
+
+* Server-side encryption at rest
+    * Data is encrypted after received by the server and decrypted before sending
+    * The encryption/decryption keys must be managed somewhere, and the server must have access to it
+
+* Client-side encryption
+    * Data is encrypted by the client and never decrypted by the server. Data will be decrypted by a receiving client.
+    * Could leverage Envelope Encryption
+
+#### AWS KMS
+
+* Able to audit KMS Key usage using **CloudTrail**
+* **Never ever store your secrets in plaintext, especially in your code**
+
+* KMS Key Types
+    * Symmetric (AES-256 keys)
+        * Single encryption key that used for Encryption and Decryption
+        * You never get access to the KMS key unencrypted (must call KMS API to use)
+    * Asymmetric (RSA & ECC key pairs)
+        * Public (Encrypt) and Private Key (Decrypt) pair
+        * Public key is downloadable, but you cant get access the Private Key
+        * Use case: _Encryption outside of AWS by users who cant call the KMS API_
