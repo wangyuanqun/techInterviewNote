@@ -1113,7 +1113,7 @@ Use case:
     * can be encrypted using KMS
     * Multi-Region Secrets (primary + replicas)
 
-* AWS Sertificate Manager (ACM)
+* AWS Certificate Manager (ACM)
     * Cannot use ACM with EC2
     * if choose to **generate the certificcate outside and then import it, No automatic renewal**
     * 2 options to send notification about the expiration
@@ -1153,7 +1153,7 @@ Use case:
         * Optional Features: EKS, RDS, Aurora, EBS...
 
 * Amazon Inspector
-    * **Only for EC2, Container Image, Lambda function**, send findings to **Security and Eventbridge**
+    * **Only for EC2, Container, Lambda**, send findings to **Security and Eventbridge**
 
 * Amazon Macie
     * **Only for S3 bucket**, fully managed service uses machine learning to proctect sensitive data.
