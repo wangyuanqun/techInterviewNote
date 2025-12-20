@@ -1142,6 +1142,8 @@ Use case:
     * Define Web ACL rules in WAF
     * Use Firewall manager to apply the rules across all accounts
     * Shiled for DDoS attacks
+        * standard: free service enabled for every customer
+        * Advanced: 24/7, cost 3000 per month
 
 * Amazon GuardDuty
     * **Can protect against CryptoCurrency attacks (has a dedicated "finding" for it)**
