@@ -1076,3 +1076,84 @@ Use case:
         * Public (Encrypt) and Private Key (Decrypt) pair
         * Public key is downloadable, but you cant get access the Private Key
         * Use case: _Encryption outside of AWS by users who cant call the KMS API_
+
+* Key Management Service
+    * AWS Oened Keys (free): SSE-S3, SSE-SQS, SSE-DDB
+    * **KMS keys are scoped per region**
+        * use snapshot to transfer EBS between different region
+    * copying snapshots **across accounts**
+        * **attach a KMS Key policy to authorize cross-account access**
+
+* **KMS Multi-region Keys Client-Side encryption**
+    * **not global (primary + replicas), each key managed independently**
+    * Specific use for **DynamoDB Global Tables and Global Aurora**
+        * to **protect specific fields even from database admins**
+    * because both db have replicas it mathches the property of multi-region key
+
+* S3 replication encryption considerations
+    * **Unencrypted objects and objects encrypted with SSE-S3 are replicated by default**
+    * Objects encrypted with SSE-C can be encrypted
+    * Objects encrypted with **SSE-KMS need to be enabled**
+    * **Still can use multi-region AWS KMS keys, but they are currently treated as independent keys by Amazon S3 (the objects will still be decrypted and then encrypted)**
+
+* **AMI sharing process Encrypted via KMS**
+    1. AMI in source account is encrypted with KMS.
+    2. **Must** modify the image attribute to add **Lanuch Permission** which corresponds to targer account.
+    3. **Must** share the source KMS key with target account/ IAM role.
+    4. The IAM role / user **must** have the permissions to **DescribeKey, ReEncrypt*, CreateGrant, Decrypt**.
+    5. When launching a new EC2 from AMI, the target account optionally can choose a different KMS to re-encrypt the volumes.
+
+* SSM Parameter Store
+    * Secure storage for configuration and secrets
+
+* AWS Secrets Manager
+    * capability to forcce **rotation of secrets every X days**
+    * Automate generation of secrets on rotation using Lambda
+    * Integration with **Amazon RDS (MySQL, PostgreSQL. Aurora) when mentioned in EXam**
+    * can be encrypted using KMS
+    * Multi-Region Secrets (primary + replicas)
+
+* AWS Sertificate Manager (ACM)
+    * Cannot use ACM with EC2
+    * if choose to **generate the certificcate outside and then import it, No automatic renewal**
+    * 2 options to send notification about the expiration
+        * ACM send expiration events to EventBridge
+        * AWS Config has a managed rule to check for ACM and then sending to EventBridge
+
+#### Other security services
+
+* Web Application Firewall
+    * **protect website on Layer 7**
+    * Deploy on
+        * **ALB**
+        * **API Gateway**
+        * **CloudFront**
+        * **Cognito User Pool**
+        * **AppSync GraphQL API**
+    * For Aplication Load Balancer
+        * we can use Global Accelerator as ALB does not have a fixed IP
+        * WAF must be in the same region of ALB
+
+* Firewall manager
+    * **manage rules in all accounts of an AWS Organization**
+    * **rules are automatically aplied to new resources as they are created across all and uture accounts in your Organization**
+
+* **WAF vs. Firewall Manager vs. Shield**
+    * Define Web ACL rules in WAF
+    * Use Firewall manager to apply the rules across all accounts
+    * Shiled for DDoS attacks
+
+* Amazon GuardDuty
+    * **Can protect against CryptoCurrency attacks (has a dedicated "finding" for it)**
+    * can setup EventBridge rules
+    * input data:
+        * CloudTrail Event logs
+        * VPC Flow logs
+        * DNS logs
+        * Optional Features: EKS, RDS, Aurora, EBS...
+
+* Amazon Inspector
+    * **Only for EC2, Container Image, Lambda function**, send findings to **Security and Eventbridge**
+
+* Amazon Macie
+    * **Only for S3 bucket**, fully managed service uses machine learning to proctect sensitive data.
