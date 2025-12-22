@@ -517,7 +517,7 @@ Use case:
         * Server-Side Encryption with Customer-Provided Keys (**SSE-C**)
             * <img src="attachments/SSE-C.jpeg" width=500/>
     * Client-Side Encryption
-        * <img src="attachment" width=500/>
+        * <img src="attachments/Client-Side Encryption.jpeg" width=500/>
     * Encryption in transit (SSL/TLS)
         * S3 exposes **HTTP and HTTPS**
         * **HTTPS is mandatory for SSE-C**
@@ -1159,3 +1159,27 @@ Use case:
 
 * Amazon Macie
     * **Only for S3 bucket**, fully managed service uses machine learning to proctect sensitive data.
+
+### Virtual Private Cloud (VPC)
+
+* **Your VPC CIDR should NOT overlap with your other networks (e.g. coporate)**
+
+* **AWS reserves 5 IP addresses (first 4 & last 1)**
+    * exam tip: if you want 29 ip addresses, cant choose /27, because 2^5 - 5 = 27 < 29
+
+#### Bastion hosts
+* it allows users from internet to get access to private subnet EC2 from SSH. **It's in public subnet**
+    * **Bastion host security group** must allow inbound from he internet on port 22 from **restricted CIDR** for security reason.
+    * Also, **Security of the EC2 instances** must allow the security group of the Bastion Host.
+
+#### NAT Gateway vs. NAT Instance
+
+<img src="attachments/NAT Gateway vs NAT Instance.jpeg"/>
+
+#### NACL & Security Groups
+* NACL is a way to block a specific IP at subnet level
+* **One NACL per subnet**, new subnets are assigned with Defualt NACL, **one NACL can have multiple subnets, and update NACL when adding new subnets.**
+* **Newly created NACLs will deny everything.**
+* **Default NACL accepts everything inbound/outbound with the subnets it's associated with.**
+
+<img src="attachments/security group vs. NACL.jpeg"/>
