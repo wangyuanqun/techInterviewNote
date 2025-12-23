@@ -1162,6 +1162,8 @@ Use case:
 
 ### Virtual Private Cloud (VPC)
 
+<img src="attachments/VPC summary.png" width=1000/>
+
 * **Your VPC CIDR should NOT overlap with your other networks (e.g. coporate)**
 
 * **AWS reserves 5 IP addresses (first 4 & last 1)**
@@ -1169,7 +1171,7 @@ Use case:
 
 #### Bastion hosts
 * it allows users from internet to get access to private subnet EC2 from SSH. **It's in public subnet**
-    * **Bastion host security group** must allow inbound from he internet on port 22 from **restricted CIDR** for security reason.
+    * **Bastion host security group** must allow inbound from the internet on port 22 from **restricted CIDR** for security reason.
     * Also, **Security of the EC2 instances** must allow the security group of the Bastion Host.
 
 #### NAT Gateway vs. NAT Instance
@@ -1183,3 +1185,106 @@ Use case:
 * **Default NACL accepts everything inbound/outbound with the subnets it's associated with.**
 
 <img src="attachments/security group vs. NACL.jpeg"/>
+
+#### VPC peering
+* privately connect teo VPCs using AWS's network.
+* VPC peering is **not transitive**, if A-B, B-C, still need to peer A and C.
+* **must update route tables in _each VPS's subnets_ tot ensure EC2s can communicate with each other**
+
+#### VPC endpoints
+* it allows you to connect to AWS services using a **private network** instead of using pubic network.
+
+* Two type of VPC endpoints
+    * **Interface Endpoint (powered by PrivateLink)**
+        * provisions an ENI(private IP address) as an entry point (**must attach to a security group**) in private subnet.
+        * \$ per **hour** + \$ per **GB of data processed**
+    * **Gateway Endpoint**
+        * provision a gateway and can only be used as a **target in route table (does not use security group)**
+        * only for **S3 and DynamoDB**
+        * **free**
+    * **prefer gateway, unless access is required from on-premises (Site-to-Site VPN or Direct Connect), a different VPC or a different region**
+
+#### VPC Flow Logs
+* **Querying logs using Athena on S3 OR using CloudWatch Logs Insights**
+
+#### Site-to-Site VPN
+
+* Virtual Private Gateway (VGW)
+    * VGW is created and attached to the VPC from which you want to create the Site-to-Stite VPN connection
+
+* Customer Gateway (CGW)
+    * Software application or physical device on customer side of the VPN connection.
+
+* Connection establishment
+    * **what ip address to use for connection on customer gateway device**
+        * if your customer gateway is public, the use the ip of the public routable device.
+        * if your customer gateway is private, it's probably behind **NAT device**, use the public ip of the NAT deivce.
+    * enable **Route Propagation** for the VPG
+    * to **ping** your EC2 from on-premises, need to enable **ICMP** protocol on the inbound of your security groups.
+    * **VPN CloudHub**
+        * Provide secure copmmunication between multiple sites, if you have multiple VPN connections
+
+#### Direct Connect (DX)
+* It provides a dedicated **private** connection from a remote network to your VPC.
+    * need to setup a VPG on your VPC
+
+* **Direct Connect Gateway**
+    * allows you to setup a Direct Connect to one or more VPC in many different regions (same account)
+
+* Connection Types
+    * Dedicated Connection
+    * Hosted Connection
+        * Capacity can be **added or removed on demand**
+    * **1 month to establish a new connection**
+
+* Encryption: **not encrypted but in private**
+
+* **Resiliency**
+
+    * <img src="attachments/direct connect resiliency.png"/>
+
+* **Site-to-Site VPN connection as a backup for Direct Connect, use second Direct Connection might be too expansive**
+
+#### Transit Gateway (exam heavy)
+
+* it allows **transitive peering between thousands of VPC and on-premises, works with Direct Connect Gateway and VPN connections**
+
+* **_Only Service that supports IP Multicast_**
+
+* **Site-to-Site VPN ECMP (euqal cost multi-path routing)**
+    * create multiple Site-to-Site VPN connections **to increase the bandwith of connection to AWS**
+    * throughput: 1x = 2.5 Gbps, 2x = 5 Gbps...
+    * \$ per GB data processed
+
+* Share Direct Connect between multiple accounts
+
+#### IPv6 in VPC
+* every IPv6 is public in AWS
+* IPv4 cannot be disabled for your VPC and subnets
+* **IPv6 troubleshooting**
+    * if you cannot launch a EC2 instance in your subnet, **not** because it cannot acquire a IPv6, but because there are no available IPv4 in your subnet
+    * **Solution**: create a **new IPv4 CIDR in your subnet**
+
+#### Egress-only Internet Gateway
+* **Used for IPv6 only, must update the Route Tables**
+* **only allow instances in your VPC outbound connections over IPv6**
+
+* **NAT Gateway vs. Internet Gateway vs. Egress-only Internet Gateway**
+
+<img src="attachments/egress-only internet gateway.png" width=600/>
+
+### Networking Costs in AWS
+
+* Use private IP instead of public IP for good \$ and better network performance.
+
+* Minimizing egress traffic network cost
+    * egress traffic: outbound traffic (from AWS to outside)
+    * **Direct Connect location that are co-located in the same AWS region result in lower cost for egress network**
+
+* NAT Gateway vs. Gateway VPC endpoint
+
+<img src="attachments/price NAT gateway vs. gateway vpc endpoint.png" width=600/>
+
+#### AWS Network Firewall
+* protect the entire VPC from network layer to application layer
+* Internally, the AWS Network Firewall uses the **AWS Gateway Load Balancer**
