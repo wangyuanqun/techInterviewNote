@@ -1288,3 +1288,24 @@ Use case:
 #### AWS Network Firewall
 * protect the entire VPC from network layer to application layer
 * Internally, the AWS Network Firewall uses the **AWS Gateway Load Balancer**
+
+### Disaster Recovery Overview (exam heavy)
+
+#### Database Migration Service (DMS)
+* SCT - AWS Schema Conevrsion Tool
+    * **Only use when you migrating to a different engine(MySQL, PostgreSQL)**
+
+#### Migration example - important
+* RDS MySQL to Aurora MySQL
+    * use snapshots from RDS restore as Aurora DB.
+* External MySQL to Aurora
+    * Use **Percona XtraBackup** to create file backup in S3 and create a Aurora DB from it.
+* Use DMS if both database are up and running
+* same for postgres
+
+* Application Discovery Service
+    * Agentless Discovery Connector
+    * Application Discovery Agent - provide mode info
+
+* Faster RTO
+    * Backup & restore -> Pilot Light -> Warm Standby -> multi site
