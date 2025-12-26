@@ -1309,3 +1309,33 @@ Use case:
 
 * Faster RTO
     * Backup & restore -> Pilot Light -> Warm Standby -> multi site
+
+### Solution Architecture
+
+#### HPC on AWS
+* EC2 Enhanced Networking
+    * **(Elastic Network Adapter) ENA up to 100GB**
+        * **(Elastic Fabric Adapteer) EFA, improved ENA, ONLY for Linux**
+
+
+### Other services
+
+#### Amazon CloudFormation (Infrastructure as Code)
+
+#### Amazon Pinpoint (SMS to customers, stream events to SNS, CloudWatch, Kinesis)
+
+#### Amazon AppFlow (Software-as-a-Servoice, Salesforce, ServiceNow)
+
+#### AWS Trusted Advisor
+* runs checks against to your account to recommand cost optimization, performance, security, fault tolerance, and service limits.
+
+
+#### Domain 1: Design Secure Architectures 30%
+
+#### Domain 2: Design Resilient Architectures 26%
+
+#### Domain 3: Design High-Performaing Architectures 24%
+
+#### Domain 4: Design Cost-Optimized Architectures 20%
+
+### AWS Solutions Library (not only has diagrams but also has CloudFormation template to implement)
