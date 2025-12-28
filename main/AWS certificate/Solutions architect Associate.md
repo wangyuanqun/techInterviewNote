@@ -6,11 +6,6 @@
 
 
 ==== **Solutions Architect Associate Udemy** ============================
-#### Private vs Public vs Elastic IP
-* shouldn't use Elastic IP
-    * not good for architectural decisions
-    * should use random public IP with DNS name
-    * use Load Balancer and don't use public IP
 #### Placement group
 * **cluster** -clusters instances into a low-latency group in a **single Availability Zone**
     * Great network (10 Gps bandwidth between instances with Enhanced Networking enabled - recommended)
@@ -34,11 +29,7 @@
 #### Elastic Network Interface (ENI)
 [ENI link](https://aws.amazon.com/blogs/aws/new-elastic-network-interfaces-in-the-virtual-private-cloud/)
 
-* Primary private IPv4, one or more secondary IPv4
-* One Elastic IP (IPv4) per private IPv4
-* One Public IPv4
-* One or more security groups
-* A MAC address 
+* attached to one AZ
 
 Good for failover -> reattach to a different instance
 
@@ -71,7 +62,7 @@ Use case:
 
 * EBS multi- Attach - only for **io1/io2 family**
     * attach the same EBS to multiple EC2 in the same AZ
-    * **Up to 16 EC2 instances at a time**
+    * **Up to 16 EC2 instances at a time to the same volume**
     * applications must manage **concurrent** write operations
 
 * EBS Encryption
