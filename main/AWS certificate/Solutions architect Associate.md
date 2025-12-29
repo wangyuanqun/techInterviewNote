@@ -119,12 +119,16 @@ Use case:
 
 * Application LB
     * is great for **micro servicews & container-based application** - Docker & Amazon ECS
-    * Can use Security Groups to control the inbound and outbound connections
-        * for example, for the instances under ALB, edit the inbound rules to only allow the security group that the ALB is in.
+    * static DNS name
+    * supports redirects (from HTTP to HTTPs)
+    * routing table to different target groups
+        * URL
+        * hostname
+        * Query String. Headers
     * The instances can only see the private ip address of the ALB, to get the client's ip addresses, ALB adds a header called **X-Forwarded-For**
 
 * Network LB - ultra high performance
-    * it has **one static IP per AZ**, and supports assigning Elastic IP
+    * it has **one static IP per AZ**, and supports assigning Elastic IP, also a static DNS name
     * target groups
         * EC2 instances
         * **private** IP address
@@ -161,7 +165,7 @@ Use case:
     * **SNI Sserver Name Indication**
         * solves the problem of loading multiple SSL certificates onto one web server
 
-* **Deregistration Delay**
+* **Deregistration Delay (ALB/NLB)** - Connection draining (CLB)
     * it give some time for your instances to complete the "in-flight requests" while the instance is de-registered or unhealthy
     * <img src="attachments/Deregisteration delay.jpeg" width=200/>
 
@@ -188,7 +192,7 @@ Use case:
         * Target Tracking Scaling
             * example: want the average ASG CPU to stay around 40%
         * Simple/Step Scaling
-            * example: when a cloudwatch alarm is trigger (CPU > 70%) add 2 new units
+            * example: when a cloudwatch alarm is trigger (CPU > 70%) add 2 new units, or remove.
     * Scheduled Scaling
         * example: increase the min capacity to 10 at 5 pm on Fri
     * Predictive Scaling
