@@ -355,7 +355,7 @@ Use case:
         * **can** be associated with Health Check
         * **not** a subsitiude for an ELB, as it's at client side
         * return up to 8 healthy records
-    * Geoproximity (Traffic flow feature)
+    * Geoproximity (need to enable Traffic flow feature)
         * shift more traffic to resources based on defined **bias**
     * IP-based
         * provide a list of CIDRs for your clients
@@ -380,6 +380,15 @@ Use case:
 * Route 53 & Hybrid DNS
     * <img src="attachments/Inbound endpoint.jpeg" width=400/>
     * <img src="attachments/Outbound endpoint.jpeg" width=400/>
+
+#### Solution Architecture discussion
+* How to initiate EC2 instance quickly
+    * Use a Golden AMI: install beforehand, launch instance with it
+    * Bootstrap with User Data
+    * Hybrid: mix Golden AMI and User Data (**Elastic Beastalk**)
+* Elastic Beanstalk
+    * A free managed serivew for developers to depoly applications.
+
 
 ### S3
 
