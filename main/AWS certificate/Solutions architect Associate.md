@@ -462,7 +462,7 @@ Use case:
     * price example
         * <img src="attachments/price example.jpeg" width=500/>
 
-* S3 replication rules (with S3 Analytics)
+* S3 Lifecycle Rules (with S3 Analytics)
     * Transaction Actions - move objects to another storage class
         * move objects to Standard IA class 60 days after creation
         * move to Glacier for achiving after 6 months
@@ -500,6 +500,7 @@ Use case:
     * You can use **S3 inventory** to get object list and use **Athena** to query and filter your objects, then pas it to **Batch Operation** to do the work.
 
 * S3 Storage Lens
+    * used to understand, analyze and optimize **storage** across entire **AWS Organization**.
     * <img src="attachments/storage lens.jpeg" width=500/>
     * **default dashboard has data across multiple accounts and multiple regions**
     * **Free Metrics**
@@ -531,7 +532,7 @@ Use case:
 * **CORS Cross-Origin Resource Sharing**
     * web browser security that allows you to enable files being retrieved from one S3 bucket in case the request is originating from another origin
     * Origin = scheme (protocol) + host (domain) + port
-    * If a client makes a cross-origin request on S3 bucket, need to enable the correct CORS headers
+    * **If a client makes a cross-origin request on S3 bucket, need to enable the correct CORS headers**
         * you can allow for a specific origin or for *(all origins)
 
 * **S3 - MFA Delete**
@@ -571,9 +572,11 @@ Use case:
 * S3 - Access Points
     * <img src="attachments/access point.jpeg" width=500/>
 * S3 Object Lambda use case
-    * Redacting personally identifiable information for analytics or non production environments.
+    * **Redacting personally identifiable information** for analytics or non production environments.
     * Converting across data formats, such as converting XML to JSON.
     * Resizing and watermarking images on the fly using caller-specific details, such as the user who requested the object.
+
+#### CloudFront and Global Accelerator
 
 * CloudFront
     * **CDN**
