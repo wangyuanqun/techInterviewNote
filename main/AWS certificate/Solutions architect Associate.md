@@ -611,8 +611,8 @@ Use case:
                 * Improves performance for a wide range of applications over TCP or UDP
                 * Proxying packets at the edge to applications running in one or more AWS Regions
                 * Good fit for non-HTTP use cases, such as gaming (UDP), IoT (MQTT), or Voice over IP
-                * Good for HTTP use cases that require static IP addresses
-                * Good for HTTP use cases that required deterministic, fast regional failover
+                * Good for HTTP use cases that **require static IP addresses**
+                * Good for HTTP use cases that **required deterministic, fast regional failover**
 
 #### AWS Storage Extras
 
