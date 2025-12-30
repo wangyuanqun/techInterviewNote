@@ -613,6 +613,8 @@ Use case:
                 * Good for HTTP use cases that require static IP addresses
                 * Good for HTTP use cases that required deterministic, fast regional failover
 
+#### AWS Storage Extras
+
 * AWS Snowball
     * Highly-secure, portable **devices** to collect and process data at the edge, and migrate data into and out of AWS
         * Storage optimized device has 210 TB SSD
