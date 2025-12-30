@@ -582,6 +582,7 @@ Use case:
     * **CDN**
     * **Improves read performance, content is cached at the edge**
     * DDoS protection, integration with Shield, AWS Web Application Firewall
+    * **Geo Restriction to limit IP**
     * **Cloud Front vs S3 Cross Region Replication**
         * CloudFront:
             * Global Edge network
