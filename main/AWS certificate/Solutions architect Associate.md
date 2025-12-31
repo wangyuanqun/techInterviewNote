@@ -789,6 +789,11 @@ Use case:
     * **expose any AWS API/service endpoint**
     * row level security in DynamoDB
 
+* AWS Step Function
+    * **huamn approval**
+    * **workflow**
+    * **orchestrate**
+
 * Amazon Cognito
     * give users an identity to interact with **web/mobile/SAML**
     * interact with API Gateway or ALB
