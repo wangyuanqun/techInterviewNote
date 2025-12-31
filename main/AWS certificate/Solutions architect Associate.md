@@ -798,6 +798,23 @@ Use case:
     * give users an identity to interact with **web/mobile/SAML**
     * interact with API Gateway or ALB
 
+#### Database
+
+* DocumentDB
+    * **MongoDB**
+    * **NoSQL**
+
+* Neptune
+    * **graph dataset**
+    * **social network**
+
+* Amazon Keyspace
+    * **Apache Cassandra**
+
+* Amazon Timestream
+    * **time series database**
+
+
 ### Data & Analytics
 
 * Athena
