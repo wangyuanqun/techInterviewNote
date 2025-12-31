@@ -626,6 +626,7 @@ Use case:
             * import to S3 first, then use S3 lifecycle policy
 
 * **Amazon FSx**
+    * **luanch 3rd party high-performance file systems on AWS**
     * FSx for Windows
         * support **SMB**
         * Can be mounted on **Linux EC2 Instance**
