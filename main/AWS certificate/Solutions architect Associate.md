@@ -801,6 +801,7 @@ Use case:
 #### Database
 
 * DocumentDB
+    * **not serverless**
     * **MongoDB**
     * **NoSQL**
 
