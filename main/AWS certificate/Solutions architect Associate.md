@@ -627,6 +627,7 @@ Use case:
 
 * **Amazon FSx**
     * FSx for Windows
+        * support **SMB**
         * Can be mounted on **Linux EC2 Instance**
         * support **Microsoft's Distributed File System (DFS) Namespaces**
         * Can be **accessed** from your on-premises infrastructure (VPN or Direct Connect)
@@ -648,26 +649,34 @@ Use case:
                 * Long-term storage
                 * Data is replicated within **same AZ**
                 * used for sensitive data
-    * FSx for NetApp ONTAP
+    * FSx for NetApp ONTAP/NAS
         * **compatible with NFS, SMB, iSCSI protocol**
-        * Point-in-time instantaneous cloning
+        * **Point-in-time instantaneous cloning**
     * FSx for OpenZFS
         * **compatible with NFS**
-        * Point-in-time instantaneous cloning
+        * **Point-in-time instantaneous cloning**
 
 * AWS Storage Gateway
-    * used for long-term migration from on-premis to cloud
+    * **Hybrid cloud**, a bridge between on-premises data and cloud data
+    * File Gateway - NFS/SMB
+        * **most recently used data is cached in the file gateway**
+        * **lifecycle policy to s3 Glacier**
+    * Volume Gateway - iSCSI
+        * **Cached volumes**: low latency to **most recent data**
+        * **Stored volumes**: **entire dataset** is on premse, scheduled backups to S3
+    * Tape Gateway - iSCSI VTL (virtual tap library)
     * <img src="attachments/storage gateway.jpeg" width=600/>
 
 * AWS Transfer Family
-    * used when dont want to use S3 or EFS APIs
+    * only use **FTP/FTPS/SFTP** to transfer to S3
     * <img src="attachments/transfer family.jpeg" width=600/>
 
 * AWS DataSync
     * **File permissions and metadata are preserved**
-    * can synchronize between anything, but it's not continuous. It's a scheduled task that runs hourly, daily, weekly. **need to run the DataSync agents if connecting to an NFS or SMB server**
+    * can synchronize between anything
+    * **need to run the DataSync agents if connecting to an NFS or SMB server**
+    * snowcone is with DataSync pre-installed
     * <img src="attachments/datasync.jpeg" width=600/>
-    * snowcone is a device in the AWS Anow Family
 
 ### Message Queue
 
