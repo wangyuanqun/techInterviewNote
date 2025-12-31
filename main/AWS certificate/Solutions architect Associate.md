@@ -770,14 +770,28 @@ Use case:
     * **The lambda function must be deployed in your VPC, because RDS Proxy is never public accessible**
 
 * **Amazon DynamoDB**
-    * is made of **Tables**
-    * **in DynamoDB you can rapidly evolve schemas**
+    * **fully managed, highly available NoSQL**
+    * **security with IAM, very fast and stable**
+    * is made of **Tables**, no need to create DB
+    * **in DynamoDB you can rapidly evolve schemas - how data looks**
+    * **TTL**
+    * DynamoDB to S3, need to enable PITR
     * Advanced feature - **DAX**
-        * **solve read congestion by caching, microseconds latency for cached data**
-        * DynamoDB stream vs Kinesis data streams
+        * **solve read congestion by caching, _microseconds_ latency for cached data**
+        * **DynamoDB stream** vs Kinesis data streams
             * <img src="attachments/dynamoDB vs Kinesis data stream.jpeg"/>
         * **global table requires DynamoDB stream to be enabled**
         * **The maximum item size in DynamoDB is 400 KB**
+
+* API Gateway
+    * rest API endpoint to Client, proxy request with Lambda
+    * Integrated with Lambda
+    * **expose any AWS API/service endpoint**
+    * row level security in DynamoDB
+
+* Amazon Cognito
+    * give users an identity to interact with **web/mobile/SAML**
+    * interact with API Gateway or ALB
 
 ### Data & Analytics
 
