@@ -682,12 +682,12 @@ Use case:
 ### Message Queue
 
 * SQS - queue model - standard
-    * used to **decouple applications**
+    * used to **decouple applications**, used as buffer
     * default duration is 4 days upto 14 days
     * size upto 1024 KB
     * can have duplicate messages - at least once delivery
     * can have out of order message
-    * **SQS with AScalingG**, CloudWatch metric - Queue Length to scale the instances
+    * **SQS with AScalingG**, CloudWatch metric/alarm - use Queue Length to scale the instances
         * to avoid EC2 instances overwhelm the database
     * Encryption
         * in-flight with HTTPS API
@@ -699,7 +699,7 @@ Use case:
         * to allow other services to write to an SQS queue
     * **Message Visibility Timeout**
         * if a message used by a consumer will have **30 sec** invisible time before it's visible again
-        * call changeMessageVisility API to get more time
+        * call **changeMessageVisility** API to get more time
     * **Long polling**
         * **it decreases the number of API calls made to SQS while increasing the efficiency and reducing latency of your application**
         * use WaitTimeSeconds to set the time that consumer needs to wait, 20 secs prefered
@@ -718,20 +718,24 @@ Use case:
         * S3 -> SNS -> multiple SQS and/or Lambda 
 
 * Kinesis data streams - **real-time** streaming model
+    * Collect and store streaming data
+    * retention is between 365 days
     * data can't be deleted
     * data up to 1MB
     * Capacity Modes
-        * Provisioned mode
+        * Provisioned mode: choose num of **shards**
         * On-demand mode
 
 * Amazon Data Firehose - **Near Real-Time**
+    * send data from src to des
+    * no torage
     * <img src="attachments/data firehouse.jpeg" width=600/>
 
 * <img src="attachments/kinese vs firehouse.jpeg" width=600/>
 
 * Amazon MQ
     * use **EFS** for HA
-    * support open protocols when **migrating** for **RabbitMQ and ActiveMQ**
+    * used to support open protocols when **migrating** for **RabbitMQ and ActiveMQ**
 
 ### Containers
 
