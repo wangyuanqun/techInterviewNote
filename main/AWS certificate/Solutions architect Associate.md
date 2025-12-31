@@ -740,15 +740,24 @@ Use case:
 ### Containers
 
 * ECS
+    * EC2 Launch Type: **You** must provision and maintain EC2 instances: **Choose ECS Cluster Capacity Provider instead of ASG**
+    * Fargate Launch Type: **Serverless** - Fargate + EFS (preferred)
+
+* ECR
+    * store and manage Docker images
 
 * EKS
+    * **Fargate**
     * Need to specify **StorageClass** on your EKS cluster
         * Amazon EBS
         * **Amazon EFS (Only one that works with Fargate)**
         * Amazon FSx for Lustre
         * Amazon FXs for NetApp ONTAP
 
-* **App2Container - used to migrate Java .Net to Amazon**
+* AWS App Runner
+    * used to deploy **Web Application without infracture experience**
+
+* **App2Container - used to migrate Java .Net to Amazon, lift-and-shift**
 
 
 ### Serverless
