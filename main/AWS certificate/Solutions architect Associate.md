@@ -820,9 +820,10 @@ Use case:
 
 * Athena
     * **Serverless** query service to analyze data in **S3**
+    * Used with QuickSight
     * Performance improvement
         * Use **columnar data** for cost savings (**less scan**)
-            * recommanded for **ORC, Parquet**
+            * recommanded for **ORC, Parquet**, Glue can help transfer format
         * Compress data for smaller retrievals
         * Partition datasets in S3
         * Use larger files to minimize overhead
@@ -831,26 +832,26 @@ Use case:
 
 * Redshift
     * **Provisioned cluster and Serverless cluster**
-    * PostgreSQL, **not used for OLTP(online transaction processing)**
-    * used for **OLAP(online analytical processing)**
+    * vs. Athena: faster but need to provision whole cluster
+    * PostgreSQL, **OLAP(online analytical processing)**
     * **Columnar storage** - better performance
-    * enable **automated snapshots, configure automatically copy snapshots to another AWS region**
+    * enable **automated snapshots, configure automatically copy snapshots to another AWS region for DR**
     * how to load data to it
         * **Large inserts are much better**
         * Kinesis Data Firehouse -> Redshift
-        * S3 -> Redshift, with **enhanced VPC rouyting through VPC only**
+        * S3 -> Redshift, with **enhanced VPC routing through VPC only** to keep network in private
         * EC2 Instance (JDBC driver) -> Redshift (large batches to write is preferred)
     * **Redshift Spectrum - query data in S3 without loading**
-        * must have Redshift cluster ready
+        * **must have Redshift cluster ready**
 
 * OpenSearch
-    * common used as a complement to another database
+    * common used as a complement to another database, with lambda/data firehouse to search
     * **search any field, even partially matches**
     * managed cluster or severless cluster
     * **does not** natively support SQL (can be enabled via plugin)
 
 * EMR - Elastic MapReduce
-    * creating **Hadoop clusters**
+    * creating **Hadoop clusters/Spark/Flink/HBase**
     * used for **data processing, machine learning, web indexing**
     * made of **hunderds of EC2 Instances**
     * Node type & purchasing
@@ -863,33 +864,33 @@ Use case:
 
 * QuickSight
     * **serverless BI(business intelligence) service to create interactive dashboards**
-    * **SPICE engine (im-memory) is only used when data is directly imported to QuickSight**
+    * **SPICE engine (in-memory) is only used when data is directly imported to QuickSight**
     * Enterprise edition: possible to setup **Column-level security**
     * Define Users (standard version) and Groups (enterprise version)
         * **these only exist within QuickSight, noto IAM!!**
 
 * Glue
-    * serverless service to manage **extract, transform, and load (ETL) service**
+    * serverless service to manage **extract, transform, and load (ETL) service to prepare and transfer data for analysis**
+    * convert data to Parquet for Athena
     * <img src="attachments/convert data to parquet format with glue.jpeg" width=600/>
     * **Glue Job Bookmarks: prevent re-processing old data**
     * **Glue DataBrew: clean and normalize data using pre-built transformat**
     * **Glue studio: new GUI**
-    * **Glue streaming ETL: instead run batch jobs, can read through database**
+    * **Glue streaming ETL: capatible with Kinesis Data streaming, kafka, MSK**
 
 * Lake Formation
+    * data lake: central place have all data for analysis
     * **Fine-grained Access Control for your applications (row and column-level )**
     * stored in S3, but sources can be from S3, RDS, Aurora, on-premises
 
 * Apache Flink
-    * **does not read from Amazon Data Firehose**
+    * **does not read from Amazon Data Firehose, but from Kinesis data streams**
 
 * Amazon MSK - Kafka
     * **alternative to Amazon Kinesis**
         * MSK suport higher size than 1 MB
-    * Fully managed Apache Kafka
-        * data is store on **EBS for as long as you want**
-    * MSK serverless
-        * without managing capacity
+    * data is store on **EBS for as long as you want**
+
 
 ### AI
 
