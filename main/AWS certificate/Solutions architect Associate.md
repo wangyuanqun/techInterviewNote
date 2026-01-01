@@ -1113,7 +1113,7 @@ Use case:
         * can create Windows EC2 instance
 
 * AWS Control Tower
-    * **set up and govern a secure and compliant <u>multi-account AWS environment</u>**
+    * **set up and govern a secure and compliant _multi-account AWS environment_**
     * it uses AWS Organizations to create accounts
     * Benefits: automate, dashboard, Guardrails
     * Guardrails
