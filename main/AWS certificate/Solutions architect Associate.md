@@ -1223,11 +1223,7 @@ Use case:
 * Amazon GuardDuty
     * **Can protect against CryptoCurrency attacks (has a dedicated "finding" for it)**
     * can setup EventBridge rules
-    * input data:
-        * CloudTrail Event logs
-        * VPC Flow logs
-        * DNS logs
-        * Optional Features: EKS, RDS, Aurora, EBS...
+    * **intelligent Threat discovery, _malicious/suspicious_**
 
 * Amazon Inspector
     * **Only for EC2, Container, Lambda**, send findings to **Security and Eventbridge**
