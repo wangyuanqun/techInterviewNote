@@ -1210,6 +1210,9 @@ Use case:
     * **manage rules in all accounts of an AWS Organization**
     * **rules are automatically aplied to new resources as they are created across all and uture accounts in your Organization**
 
+* Shield **Advanced** (cost money compared to Standard)
+    * **Route 53, CloudFront, Global Accelerator, ELB, EC2**
+
 * **WAF vs. Firewall Manager vs. Shield**
     * Define Web ACL rules in WAF
     * Use Firewall manager to apply the rules across all accounts
