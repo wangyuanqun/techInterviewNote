@@ -965,7 +965,7 @@ Use case:
     * <img src="attachments/cloudwatch logs aggregation.jpeg" width=600/>
 
 * CloudWatch Agent
-    * by default no logs from EC2 will go to CloudWatch, need to run a CloudWatch Agent on EC2/On-premises. Make sure **correct IAM role**
+    * by default **no logs from EC2 will go to CloudWatch**, need to run a CloudWatch Agent on EC2/On-premises. Make sure **correct IAM role**
     * **CloudWatch Logs Agent**
         * Old version of the agent
         * CPU, disk, network(high level)
