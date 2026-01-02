@@ -1378,9 +1378,10 @@ Use case:
 * Use DMS if both database are up and running
 * same for postgres
 
-* Application Discovery Service
+* Application **Discovery Service**
     * Agentless Discovery Connector
     * Application Discovery Agent - provide mode info
+    * Application **Migration Service** - **lift-and-shift(rehost) solution**
 
 * Faster RTO
     * Backup & restore -> Pilot Light -> Warm Standby -> multi site
