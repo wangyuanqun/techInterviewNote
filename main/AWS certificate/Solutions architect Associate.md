@@ -1363,6 +1363,9 @@ Use case:
 
 ### Disaster Recovery Overview (exam heavy)
 
+#### AWS Backup
+* central place to manage backups
+
 #### Database Migration Service (DMS)
 * SCT - AWS Schema Conevrsion Tool
     * **Only use when you migrating to a different engine(MySQL, PostgreSQL)**
