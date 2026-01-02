@@ -1358,7 +1358,7 @@ Use case:
 <img src="attachments/price NAT gateway vs. gateway vpc endpoint.png" width=600/>
 
 #### AWS Network Firewall
-* protect the entire VPC from network layer to application layer
+* protect the entire VPC from **network layer to application layer**
 * Internally, the AWS Network Firewall uses the **AWS Gateway Load Balancer**
 
 ### Disaster Recovery Overview (exam heavy)
