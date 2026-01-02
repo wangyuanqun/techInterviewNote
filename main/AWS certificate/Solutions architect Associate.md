@@ -1278,7 +1278,8 @@ Use case:
 #### VPC Flow Logs
 * **Querying logs using Athena on S3 OR using CloudWatch Logs Insights**
 
-#### Site-to-Site VPN
+#### Site-to-Site VPN (encrypted)
+* used for corporate data center to connect to AWS **privately and does not need high bandwidth and handle small amount traffic**
 
 * Virtual Private Gateway (VGW)
     * VGW is created and attached to the VPC from which you want to create the Site-to-Stite VPN connection
@@ -1295,9 +1296,9 @@ Use case:
     * **VPN CloudHub**
         * Provide secure copmmunication between multiple sites, if you have multiple VPN connections
 
-#### Direct Connect (DX)
-* It provides a dedicated **private** connection from a remote network to your VPC.
-    * need to setup a VPG on your VPC
+#### Direct Connect (not encrypted) (DX)
+* It provides a **dedicated private** connection from a remote network to your VPC.
+    * need to setup a VGW on your VPC
 
 * **Direct Connect Gateway**
     * allows you to setup a Direct Connect to one or more VPC in many different regions (same account)
@@ -1396,6 +1397,8 @@ Use case:
 #### Amazon Pinpoint (SMS to customers, stream events to SNS, CloudWatch, Kinesis)
 
 #### Amazon AppFlow (Software-as-a-Servoice, Salesforce, ServiceNow)
+
+#### Amplify - for web and mobile applications
 
 #### AWS Trusted Advisor
 * runs checks against to your account to recommand cost optimization, performance, security, fault tolerance, and service limits.
