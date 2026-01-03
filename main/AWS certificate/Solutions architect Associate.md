@@ -1384,8 +1384,8 @@ Use case:
     * Application Discovery Agent - provide mode info
     * Application **Migration Service** - **lift-and-shift(rehost) solution**
 
-* Faster RTO
-    * Backup & restore -> Pilot Light -> Warm Standby -> multi site
+* RPO(data loss) - Diaster - RTO (down time)
+    * Backup & restore -> Pilot Light (a very small version of the app is always running, only for critical core systems) -> Warm Standby -> multi site (mins or seconds)
 
 ### Solution Architecture
 
@@ -1397,16 +1397,21 @@ Use case:
 
 ### Other services
 
-#### Amazon CloudFormation (Infrastructure as Code)
+* Amazon CloudFormation (Infrastructure as Code)
 
-#### Amazon Pinpoint (SMS to customers, stream events to SNS, CloudWatch, Kinesis)
+* SES simple mail service
 
-#### Amazon AppFlow (Software-as-a-Servoice, Salesforce, ServiceNow)
+* SSM Session Magger
+    * No SSH / port 22 needed, better security
 
-#### Amplify - for web and mobile applications
+* Amazon Pinpoint (SMS to customers, stream events to SNS, CloudWatch, Kinesis)
 
-#### AWS Trusted Advisor
-* runs checks against to your account to recommand cost optimization, performance, security, fault tolerance, and service limits.
+* Amazon AppFlow (Software-as-a-Servoice, Salesforce, ServiceNow)
+
+* Amplify - for web and mobile applications
+
+* AWS Trusted Advisor
+    * runs checks against to your account to recommand cost optimization, performance, security, fault tolerance, and service limits.
 
 
 #### Domain 1: Design Secure Architectures 30%
