@@ -1372,7 +1372,8 @@ Use case:
 
 #### Migration example - important
 * RDS MySQL to Aurora MySQL
-    * use snapshots from RDS restore as Aurora DB.
+    * use snapshots from RDS restore as Aurora DB.(downtime)
+    * create a Aurora RR from RDS MySQL and then promoted it (continous)
 * External MySQL to Aurora
     * Use **Percona XtraBackup** to create file backup in S3 and create a Aurora DB from it.
 * Use DMS if both database are up and running
