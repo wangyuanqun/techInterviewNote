@@ -134,11 +134,11 @@ Add these settings:
     "cmake.configureSettings": {
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
     },
-    
+
     // C++ IntelliSense
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "C_Cpp.intelliSenseEngine": "default",
-    
+
     // Editor settings
     "files.associations": {
         "*.h": "cpp",
@@ -146,7 +146,7 @@ Add these settings:
         "*.cpp": "cpp",
         "CMakeLists.txt": "cmake"
     },
-    
+
     // Line endings (important for cross-platform)
     "files.eol": "\n",
     "files.insertFinalNewline": true,
@@ -513,13 +513,13 @@ code .
 
 int main() {
     std::cout << "Hello from CMake!" << std::endl;
-    
+
     #ifdef PLATFORM_WINDOWS
         std::cout << "Running on Windows with MSVC" << std::endl;
     #elif defined(PLATFORM_MAC)
         std::cout << "Running on macOS with Clang" << std::endl;
     #endif
-    
+
     return 0;
 }
 ```
@@ -548,3 +548,19 @@ Running on Windows with MSVC
 6. **Enable compile commands** - Better IntelliSense support
 7. **Use consistent line endings** - Set `files.eol` to `\n`
 8. **Test on both platforms** - Use CI/CD (GitHub Actions, etc.)
+
+
+
+ *  Executing task: cmake -B D:\GitRepo\SoundTrack/build -S D:\GitRepo\SoundTrack
+
+cmake : The term 'cmake' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was
+included, verify that the path is correct and try again.
+At line:1 char:1
++ cmake -B D:\GitRepo\SoundTrack/build -S D:\GitRepo\SoundTrack
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (cmake:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+
+ *  The terminal process "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -Command cmake -B D:\GitRepo\SoundTrack/build -S D:\GitRepo\SoundTrack" terminated with exit code: 1.
+ *  Terminal will be reused by tasks, press any key to close it.
