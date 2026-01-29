@@ -550,7 +550,7 @@ Running on Windows with MSVC
 8. **Test on both platforms** - Use CI/CD (GitHub Actions, etc.)
 
 
-
+# Debug error
  *  Executing task: cmake -B D:\GitRepo\SoundTrack/build -S D:\GitRepo\SoundTrack
 
 cmake : The term 'cmake' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was
@@ -564,3 +564,49 @@ At line:1 char:1
 
  *  The terminal process "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -Command cmake -B D:\GitRepo\SoundTrack/build -S D:\GitRepo\SoundTrack" terminated with exit code: 1.
  *  Terminal will be reused by tasks, press any key to close it.
+
+cmake build (cmake: select a kit):
+// 1 amd64
+[main] Building folder: d:/GitRepo/SoundTrack/build
+[build] Starting build
+[proc] Executing command: "C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --build d:/GitRepo/SoundTrack/build --config Debug --target all --
+[build] ninja: no work to do.
+[driver] Build completed: 00:00:00.078
+[build] Build finished with exit code 0
+
+// 2 amd64_x86
+[driver] Switching to kit: Visual Studio Build Tools 2026 Release - amd64_x86
+[main] Configuring project: SoundTrack
+[proc] Executing command: "C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE --no-warn-unused-cli -S D:/GitRepo/SoundTrack -B d:/GitRepo/SoundTrack/build -G Ninja
+[cmake] Not searching for unused variables given on the command line.
+[cmake] -- Configuring done (0.1s)
+[cmake] -- Generating done (0.1s)
+[cmake] -- Build files have been written to: D:/GitRepo/SoundTrack/build
+
+
+//3 x86
+[driver] Switching to kit: Visual Studio Build Tools 2026 Release - x86
+[driver] Removing d:/GitRepo/SoundTrack/build/CMakeCache.txt
+[driver] Removing d:%5CGitRepo%5CSoundTrack%5Cbuild%5CCMakeFiles
+[main] Configuring project: SoundTrack
+[proc] Executing command: "C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE --no-warn-unused-cli -S D:/GitRepo/SoundTrack -B d:/GitRepo/SoundTrack/build -G Ninja
+[cmake] Not searching for unused variables given on the command line.
+[cmake] -- The CXX compiler identification is MSVC 19.50.35723.0
+[cmake] -- Detecting CXX compiler ABI info
+[cmake] -- Detecting CXX compiler ABI info - done
+[cmake] -- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.50.35717/bin/Hostx86/x86/cl.exe - skipped
+[cmake] -- Detecting CXX compile features
+[cmake] -- Detecting CXX compile features - done
+[cmake] -- Configuring done (2.3s)
+[cmake] -- Generating done (0.1s)
+[cmake] -- Build files have been written to: D:/GitRepo/SoundTrack/build
+
+
+//4 x86_amd64
+[driver] Switching to kit: Visual Studio Build Tools 2026 Release - x86_amd64
+[main] Configuring project: SoundTrack
+[proc] Executing command: "C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE --no-warn-unused-cli -S D:/GitRepo/SoundTrack -B d:/GitRepo/SoundTrack/build -G Ninja
+[cmake] Not searching for unused variables given on the command line.
+[cmake] -- Configuring done (0.0s)
+[cmake] -- Generating done (0.1s)
+[cmake] -- Build files have been written to: D:/GitRepo/SoundTrack/build
